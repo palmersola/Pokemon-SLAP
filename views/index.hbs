@@ -1,0 +1,16 @@
+{{#if user}}
+
+    <section>
+        <div class="avatar-display">
+            <img src="{{user.avatar}}" alt="avatar">
+        </div>
+    </section>
+
+{{#else}}
+
+    <section class="login-reg-container">
+        <a href="/login"><span id="login-link">Login</span></a>
+        <a href="/register"><span id="register-link">Register</span></a>
+    </section>
+
+{{/if}}
