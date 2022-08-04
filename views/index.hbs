@@ -1,0 +1,30 @@
+{{#if user}}
+
+    <section>
+        <div class="avatar-display">
+            <img src="{{user.sprite}}" alt="avatar">
+        </div>
+        <div class="user-text">
+            <h2>PokéSlapper</h2>
+            <h1>{{user.user_name}}</h1>
+        </div>
+    </section>
+    <section class="stats">
+        <span id="level">Level: {{user.level}}</span>
+        <span id="attack-stat">Attack: {{user.attack_stat}}</span>
+        <span id="defense-stat">Attack: {{user.defense_stat}}</span>
+        <span id="speed-stat">Attack: {{user.speed_stat}}</span>
+    </section>
+    <section class="settings">
+        <h3>Settings</h3>
+        <p>Choose your sprite</p>
+    </section>
+
+{{#else}}
+
+    <section class="login-reg-container">
+        <a href="/login"><span id="login-link">Login</span></a>
+        <a href="/register"><span id="register-link">Register</span></a>
+    </section>
+
+{{/if}}
