@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéSLAP</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    {{#if user}}
+    <header>
+        <span class="username">{{user.username}}</span>
+        <span class="level">{{user.level}}</span>
+        <span class="stats">{{user.stats}}</span>
+        <a href="/leaders">Best PokéSlappers</a>
+     </header>
+    {{/if}}
+
+    <main>
+
+        {{body}}
+
+    </main>
+
+
+
+<script src="js/front.js"></script>
+</body>
+</html>
