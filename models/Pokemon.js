@@ -32,3 +32,5 @@ Pokemon.init({
     // table name
     modelName: 'pokemon'
 });
+
+module.exports = Pokemon; 

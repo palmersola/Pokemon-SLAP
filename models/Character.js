@@ -1,11 +1,23 @@
 const { DataTypes, Model } = require('sequelize');
+const bcrypt = require('bcrypt');
+
 
 class Character extends Model { }
 
 Character.init({
     user_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: 3
+        }
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: 6
+        }
     },
     level: {
         type: DataTypes.INTEGER,
@@ -30,5 +42,20 @@ Character.init({
 }, {
     sequelize: require('../config/connection'),
     // table name
-    modelName: 'character'
+    modelName: 'character',
+
+    hooks: {
+        async beforeCreate(player) {
+            const encrypt_pass = await bcrypt.hash(player.password, 10);
+
+            player.password = encrypt_pass
+        }
+    }
 });
+
+Character.prototype.validPass = async function(pass, stored_pass) {
+
+    return await bcrypt.compare(pass, stored_pass);
+}
+
+module.exports = Character;
