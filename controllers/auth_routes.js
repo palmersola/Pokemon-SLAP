@@ -1,5 +1,6 @@
 const auth_router = require("express").Router();
 const Character = require("../models/Character");
+const Pokemon = require("../models/Pokemon");
 const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
