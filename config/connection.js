@@ -6,7 +6,6 @@ const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(
       process.env.DB_NAME,
-      // "poke_slap",
       process.env.DB_USER,
       process.env.DB_PASSWORD,
       {
