@@ -20,8 +20,43 @@ header {
 
 header a {
     text-decoration: none;
-    
+    color: rgb(0, 119, 255);
 }
+
+header a:hover{
+    font-style: italic;
+    color: rgb(94, 153, 5);
+}
+
+/* index if not logged in */
+
+.login-reg-container {
+    background-color: rgba(190, 242, 68, 0.377);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(70%);
+    max-width: 300px;
+    font-size: 45px;
+    padding: 5%;
+    text-align: center;
+    border: solid 3px rgba(75, 74, 74, 0.674);
+    border-radius: 4px;
+
+
+}
+.login-reg-container a {
+    text-decoration: none;
+    color: rgb(94, 153, 5);
+    padding: 10px;
+}
+
+.login-reg-container a:hover {
+    color: rgb(68, 141, 0);
+    font-style: italic;
+}
+
+/* index if logged in! */
 
 .user-wrapper {
     display: flex;
@@ -74,3 +109,77 @@ header a {
     justify-content: center;
 }
 
+/* Login page */
+
+.form-container {
+    padding: 20px;
+    margin: auto;
+    transform: translateY(100%);
+}
+
+.form-container form {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.form-container input {
+    padding: 6px 8px;
+    margin: 1%;
+    font-size: 25px;
+}
+
+.submitBtn {
+    font-size: 25px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(127, 160, 70);
+}
+
+.submitBtn:hover {
+    font-style: italic;
+    background-color: rgb(94, 153, 5);
+}
+
+/* register page */
+
+.register-page-wrapper {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.reg-container {
+    width: 500px;
+    margin: auto;
+}
+
+.reg-container form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.reg-container input {
+    padding: 6px 8px;
+    margin: 1%;
+    font-size: 25px;
+}
+
+.reg-type-container {
+    width: 400px;
+    text-align: center;
+
+}
+
+.reg-type-container p {
+    font-size: 25px;
+}
+
+.input-rows {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 5px;
+    justify-content: center;
+}
