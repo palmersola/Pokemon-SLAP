@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 // engine function for hbs
@@ -56,3 +57,4 @@ app.use('/auth', auth_routes);
 db.sync({force: true}).then(() => {
     app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 })
+
