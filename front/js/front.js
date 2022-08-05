@@ -1,6 +1,4 @@
 
-
-
 let currentXp;
 function playGame(){
 }
