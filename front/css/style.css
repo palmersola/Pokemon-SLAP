@@ -18,12 +18,8 @@ header {
 }
 
 header a {
-<<<<<<< Updated upstream
     text-decoration: none;
     color: rgb(0, 119, 255);
-=======
-  text-decoration: none;
->>>>>>> Stashed changes
 }
 
 header a:hover{
@@ -110,7 +106,6 @@ header a:hover{
   padding: 5px 10px;
   justify-content: center;
 }
-<<<<<<< Updated upstream
 
 /* Login page */
 
@@ -186,5 +181,3 @@ header a:hover{
     padding: 5px;
     justify-content: center;
 }
-=======
->>>>>>> Stashed changes
