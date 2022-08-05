@@ -1,5 +1,4 @@
 function playGame(){
-
 }
 
 function oppSlap(){
@@ -11,7 +10,6 @@ function oppSlap(){
         console.log("Opponent Died!");
     }
 }
-
 function userSlap(){
     var hp = 100; //changes based off of level of user
     var defense = 5
@@ -42,8 +40,6 @@ function winner(){
         levelUp()
     };
 }
-
-
 function levelUp(){
 // will increase stats and update them in db to current stats of the lvl
 }
