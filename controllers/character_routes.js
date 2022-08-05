@@ -1,9 +1,9 @@
-const router = require("express").Router();
+const character_router = require("express").Router();
 const { Character, User } = require("../models/");
 
 // The `/api/Characters` endpoint
 
-router.get("/", (req, res) => {
+character_router.get("/", (req, res) => {
   // find all Characters
   // be sure to include its associated Product data
   Character.findAll({
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:id", (req, res) => {
+character_router.get("/:id", (req, res) => {
   // find a single Character by its `id`
   // be sure to include its associated Product data
   Character.findAll({
@@ -26,7 +26,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+character_router.post("/", (req, res) => {
   // create a new Character
   Character.create({
     level: req.body.level,
@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
+character_router.put("/:id", (req, res) => {
   // update a Character's name by its `id` value
   Character.update(
     {
@@ -62,7 +62,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
+character_router.delete("/:id", (req, res) => {
   // delete on Character by its `id` value
   Character.destroy({
     where: {
@@ -71,4 +71,4 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = character_router;
