@@ -1,5 +1,5 @@
 const auth_router = require("express").Router();
-const Character = require("../models/Character");
+const User = require("../models/User");
 const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
@@ -10,7 +10,7 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
     return res.redirect("/register");
   }
 
-  Character.findOne({
+  User.findOne({
     where: {
       username
     }
@@ -20,7 +20,7 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
       return res.redirect("/register");
     }
 
-    Character.create(req.body)
+    User.create(req.body)
       .then(new_user => {
         req.session.save(() => {
           req.session.user_id = new_user.id;
@@ -42,7 +42,7 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     return res.redirect("/login");
   }
 
-  Character.findOne({
+  User.findOne({
     where: {
       username
     }
