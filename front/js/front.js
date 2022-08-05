@@ -1,3 +1,7 @@
+
+
+
+let currentXp;
 function playGame(){
 }
 
@@ -42,8 +46,10 @@ function winner(){
 }
 function levelUp(){
 // will increase stats and update them in db to current stats of the lvl
+
+
 }
 function loser(){
-// saves score and add it to leaderboard and resets the game to start
+// saves score and adds it to leaderboard and resets the game to start
 }
 
