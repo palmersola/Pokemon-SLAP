@@ -18,8 +18,12 @@ header {
 }
 
 header a {
+<<<<<<< HEAD
+  text-decoration: none;
+=======
     text-decoration: none;
     color: rgb(0, 119, 255);
+>>>>>>> ee779af1a1fbc791824d612234f396be3ca6d7bd
 }
 
 header a:hover{
@@ -106,6 +110,8 @@ header a:hover{
   padding: 5px 10px;
   justify-content: center;
 }
+<<<<<<< HEAD
+=======
 
 /* Login page */
 
@@ -181,3 +187,4 @@ header a:hover{
     padding: 5px;
     justify-content: center;
 }
+>>>>>>> ee779af1a1fbc791824d612234f396be3ca6d7bd
