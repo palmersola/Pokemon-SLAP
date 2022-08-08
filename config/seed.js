@@ -4,8 +4,6 @@ const User = require("../models/User");
 const axios = require('axios');
 const seedPokes = [1, 4, 7, 10, 13, 16, 19];
 
-console.log('Outside the get');
-
 async function pokePuller(){
   for (let i = 0; i < seedPokes.length; i++) {
     let retPokeCall = await pokeApiCaller(i);

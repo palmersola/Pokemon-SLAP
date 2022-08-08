@@ -6,6 +6,11 @@ Character.init(
   {
     level: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
+    hp_stat: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     hp_stat: {
@@ -25,7 +30,7 @@ Character.init(
       allowNull: false
     },
     sprite: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     userId: {
