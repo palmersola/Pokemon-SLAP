@@ -16,7 +16,7 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
 
   User.findOne({
     where: {
-      username
+      user_name
     }
   }).then(user => {
     if (user) {
@@ -45,10 +45,9 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/login");
   }
-
   User.findOne({
     where: {
-      username
+      user_name
     }
   }).then(async user => {
     //
@@ -61,6 +60,8 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     if (!pass_is_valid) {
       req.session.errors = ["Your password is incorrect"];
       res.redirect("/login");
+      console.log("Yerp");
+      return;
     }
     req.session.save(() => {
       req.session.user_id = user.id;

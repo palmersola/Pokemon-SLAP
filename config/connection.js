@@ -14,13 +14,13 @@ const sequelize = process.env.JAWSDB_URL
         dialectOptions: {
           decimalNumbers: true
         }
+        // logging: false
       }
     );
 
 module.exports = sequelize;
 
 // const { Sequelize } = require('sequelize'); // pull in the constructor
-
 
 // // Set up our connection to the mysql server locally or on the cloud(production)
 
