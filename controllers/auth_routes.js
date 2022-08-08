@@ -7,9 +7,9 @@ const User = require("../models/User");
 const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { user_name, password } = req.body;
 
-  if (!username || !password) {
+  if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
@@ -39,9 +39,9 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
 });
 
 auth_router.post("/login", isLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { user_name, password } = req.body;
 
-  if (!username || !password) {
+  if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/login");
   }
