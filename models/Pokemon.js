@@ -1,36 +1,53 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes, Model } = require("sequelize");
 
-class Pokemon extends Model { }
+class Pokemon extends Model {}
 
-Pokemon.init({
+Pokemon.init(
+  {
     pokemon_name: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     experience: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
+    hp_stat: {
+<<<<<<< HEAD
+        type: DataTypes.INTEGER,
+        allowNull: false 
+      },
     attack_stat:{
         type: DataTypes.INTEGER,
         allowNull: false
+=======
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    attack_stat: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+>>>>>>> main
     },
     defense_stat: {
-        type: DataTypes.INTEGER,
-        allowNull: false 
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     speed_stat: {
-        type: DataTypes.INTEGER,
-        allowNull: false 
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     sprite: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
     }
-}, {
-    sequelize: require('../config/connection'),
+  },
+  {
+    sequelize: require("../config/connection"),
     // table name
-    modelName: 'pokemon'
-});
+    modelName: "pokemon"
+  }
+);
 
-module.exports = Pokemon; 
+module.exports = Pokemon;

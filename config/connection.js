@@ -13,8 +13,8 @@ const sequelize = process.env.JAWSDB_URL
         dialect: "mysql",
         dialectOptions: {
           decimalNumbers: true
-        }
-        // logging: false
+        },
+        logging: false
       }
     );
 
