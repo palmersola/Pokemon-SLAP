@@ -1,4 +1,3 @@
-
 const Character = require("../models/Character");
 const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
@@ -23,7 +22,6 @@ connection.sync({ force: true }).then(() => {
       password: bcrypt.hashSync("testing", 10)
     }
   ]);
-
 
   Character.bulkCreate([
     {
@@ -152,5 +150,3 @@ connection.sync({ force: true }).then(() => {
     }
   ]);
 });
-]);
-
