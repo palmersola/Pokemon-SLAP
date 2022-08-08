@@ -6,12 +6,37 @@ const User = require("../models/User");
 
 const { isLoggedIn } = require("./helpers");
 
-auth_router.post("/register", isLoggedIn, (req, res) => {
-  const { user_name, password } = req.body;
+// let hp = "";
+// let attack = "";
+// let defense = "";
+// let speed = "";
 
+auth_router.post("/register", isLoggedIn, (req, res) => {
+  const { user_name, password, water, fire, grass } = req.body;
+  console.log(water);
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
+  }
+  if (!water || !fire || !grass) {
+    req.session.errors = ["Please select an option."];
+    return res.redirect("/register");
+  }
+  if (water) {
+    hp = "";
+    attack = "";
+    defense = "";
+    speed = "";
+  } else if (fire) {
+    hp = "";
+    attack = "";
+    defense = "";
+    speed = "";
+  } else if (grass) {
+    hp = "";
+    attack = "";
+    defense = "";
+    speed = "";
   }
 
   User.findOne({
@@ -23,8 +48,16 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
       req.session.errors = ["A user already exists with that username."];
       return res.redirect("/register");
     }
-
     User.create(req.body)
+      .then(new_user => {
+        Character.create({
+          hp_stat: hp,
+          attack_stat: attack,
+          defense_stat: defense,
+          speed_stat: speed,
+          userId: new_user.id
+        });
+      })
       .then(new_user => {
         req.session.save(() => {
           req.session.user_id = new_user.id;

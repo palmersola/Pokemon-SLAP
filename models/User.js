@@ -25,13 +25,13 @@ User.init(
     // table name
     modelName: "user",
 
-    // hooks: {
-    //   async beforeCreate(user) {
-    //     const encrypt_pass = await bcrypt.hash(user.password, 10);
+    hooks: {
+      async beforeCreate(user) {
+        const encrypt_pass = await bcrypt.hash(user.password, 10);
 
-    //     user.password = encrypt_pass;
-    //   }
-    // }
+        user.password = encrypt_pass;
+      }
+    }
   }
 );
 

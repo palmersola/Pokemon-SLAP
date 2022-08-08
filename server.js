@@ -26,6 +26,7 @@ const app = express();
 
 // use front end files
 app.use(express.static(path.join("front")));
+app.use(express.static("trainer-sprites"));
 
 // set up engine with hbs
 app.engine("hbs", engine({ extname: ".hbs" }));

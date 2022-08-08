@@ -1,4 +1,3 @@
-
 const Character = require("../models/Character");
 const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
@@ -24,10 +23,10 @@ connection.sync({ force: true }).then(() => {
     }
   ]);
 
-
   Character.bulkCreate([
     {
       level: 1,
+      hp_stat: 70,
       attack_stat: 40,
       defense_stat: 60,
       speed_stat: 70,
@@ -36,6 +35,7 @@ connection.sync({ force: true }).then(() => {
     },
     {
       level: 1,
+      hp_stat: 70,
       attack_stat: 70,
       defense_stat: 50,
       speed_stat: 40,
@@ -44,6 +44,7 @@ connection.sync({ force: true }).then(() => {
     },
     {
       level: 1,
+      hp_stat: 70,
       attack_stat: 80,
       defense_stat: 30,
       speed_stat: 40,
@@ -52,10 +53,11 @@ connection.sync({ force: true }).then(() => {
     },
     {
       level: 1,
+      hp_stat: 70,
       attack_stat: 40,
       defense_stat: 80,
       speed_stat: 30,
-      sprite: "test",
+      sprite: "ash.png",
       userId: 4
     }
   ]);
@@ -64,6 +66,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Bulbasaur",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -72,6 +75,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Charmander",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -80,6 +84,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Squirtle",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -88,6 +93,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Jigglypuff",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -96,6 +102,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Celfairy",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -104,6 +111,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Pikachu",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -112,6 +120,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Weedle",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -120,6 +129,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Caterpie",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -129,6 +139,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Rattata",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -137,6 +148,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Ekans",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -145,6 +157,7 @@ connection.sync({ force: true }).then(() => {
     {
       pokemon_name: "Sandshrew",
       experience: 100,
+      hp_stat: 70,
       attack_stat: 50,
       defense_stat: 50,
       speed_stat: 50,
@@ -152,5 +165,3 @@ connection.sync({ force: true }).then(() => {
     }
   ]);
 });
-]);
-
