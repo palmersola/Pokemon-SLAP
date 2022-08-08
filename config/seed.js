@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 const router = require('express').Router();
 const Character = require('../models/Character');
 const Pokemon = require('../models/Pokemon');
@@ -58,7 +58,8 @@ Character.bulkCreate([
         sprite: 'test',
         user_id: 4,
     },
-=======
+])
+
 const Character = require("../models/Character");
 const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
@@ -114,8 +115,8 @@ Character.bulkCreate([
     speed_stat: 30,
     sprite: "test",
     user_id: 4
-  }
->>>>>>> Stashed changes
+  },
+
 ]);
 
 Pokemon.bulkCreate([
