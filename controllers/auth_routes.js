@@ -7,16 +7,16 @@ const User = require("../models/User");
 const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { user_name, password } = req.body;
 
-  if (!username || !password) {
+  if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
 
   User.findOne({
     where: {
-      username
+      user_name
     }
   }).then(user => {
     if (user) {
@@ -39,16 +39,15 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
 });
 
 auth_router.post("/login", isLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { user_name, password } = req.body;
 
-  if (!username || !password) {
+  if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/login");
   }
-
   User.findOne({
     where: {
-      username
+      user_name
     }
   }).then(async user => {
     //
@@ -61,6 +60,8 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     if (!pass_is_valid) {
       req.session.errors = ["Your password is incorrect"];
       res.redirect("/login");
+      console.log("Yerp");
+      return;
     }
     req.session.save(() => {
       req.session.user_id = user.id;

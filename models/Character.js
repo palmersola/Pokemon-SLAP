@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
-
+const User = require("./User");
 class Character extends Model {}
 
 Character.init(
@@ -24,16 +24,20 @@ Character.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    //   defaultValue: 1
+      references: {
+        model: User,
+        key: "id"
+      }
+      //   defaultValue: 1
     }
   },
   {
     sequelize: require("../config/connection"),
     // table name
-    modelName: "character"
+    modelName: "characters"
   }
 );
 
