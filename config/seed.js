@@ -30,8 +30,6 @@ connection.sync({ force: true }).then(() => {
     return apiCall;
   }
   pokePuller();
-
-<<<<<<< HEAD
 User.bulkCreate([
   {
     user_name: "Derek",
@@ -87,7 +85,6 @@ Character.bulkCreate([
 
 ]);
 
-=======
   User.bulkCreate([
     {
       user_name: "Derek",
@@ -146,4 +143,3 @@ Character.bulkCreate([
     }
   ]);
 });
->>>>>>> 0e519efd106912fb4631c060c8f49a3739cddb87
