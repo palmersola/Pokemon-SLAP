@@ -18,7 +18,12 @@ header {
 }
 
 header a {
+<<<<<<< HEAD
   text-decoration: none;
+=======
+    text-decoration: none;
+    color: rgb(0, 119, 255);
+>>>>>>> ee779af1a1fbc791824d612234f396be3ca6d7bd
 }
 
 header a:hover{
@@ -105,3 +110,81 @@ header a:hover{
   padding: 5px 10px;
   justify-content: center;
 }
+<<<<<<< HEAD
+=======
+
+/* Login page */
+
+.form-container {
+    padding: 20px;
+    margin: auto;
+    transform: translateY(100%);
+}
+
+.form-container form {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.form-container input {
+    padding: 6px 8px;
+    margin: 1%;
+    font-size: 25px;
+}
+
+.submitBtn {
+    font-size: 25px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(127, 160, 70);
+}
+
+.submitBtn:hover {
+    font-style: italic;
+    background-color: rgb(94, 153, 5);
+}
+
+/* register page */
+
+.register-page-wrapper {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.reg-container {
+    width: 500px;
+    margin: auto;
+}
+
+.reg-container form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.reg-container input {
+    padding: 6px 8px;
+    margin: 1%;
+    font-size: 25px;
+}
+
+.reg-type-container {
+    width: 400px;
+    text-align: center;
+
+}
+
+.reg-type-container p {
+    font-size: 25px;
+}
+
+.input-rows {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 5px;
+    justify-content: center;
+}
+>>>>>>> ee779af1a1fbc791824d612234f396be3ca6d7bd
