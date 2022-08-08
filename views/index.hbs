@@ -9,18 +9,15 @@
             <div class="avatar-display">
                 <img src={{charStats.sprite}} alt="avatar">
             </div>
-            <div class="avatar-display">
-                <img src="ash.png" alt="avatar">
-            </div>
             <div class="stats">
                 <span id="level">Level: {{charStats.level}}</span>
-                <span id="attack-stat">speed: {{charStats.speed_stat}}</span>
-                <span id="defense-stat">Attack: {{charStats.attack_stat}}</span>
-                <span id="speed-stat">Defense: {{charStats.defense_stat}}</span>
+                <span id="hp-stat">HP: {{charStats.hp_stat}}</span>
+                <span id="attack-stat">Attack: {{charStats.attack_stat}}</span>
+                <span id="defense-stat">Defense: {{charStats.defense_stat}}</span>
+                <span id="speed-stat">Speed: {{charStats.speed_stat}}</span>
             </div>
         </div>
 
-</section>
 <section class="settings">
     <h3>Settings</h3>
     <p>Choose your sprite</p>
@@ -38,13 +35,15 @@
         <img src="linebacker.png" alt="linebacker-sprite">
         <img src="lyra.png" alt="lyra-sprite">
 
+    </div>
 </section>
 
-</div>
+</section>
 
 <div class="button-container">
     <button id="playBtn">start slapping</button>
 </div>
+
 
 {{else}}
 
