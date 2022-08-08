@@ -1,3 +1,6 @@
+
+let currentXp;
+
 function playGame(){
 }
 
@@ -45,5 +48,12 @@ function levelUp(){
 }
 function loser(){
 // saves score and add it to leaderboard and resets the game to start
+
+
+
+}
+function loser(){
+// saves score and adds it to leaderboard and resets the game to start
+
 }
 
