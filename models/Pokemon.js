@@ -11,6 +11,10 @@ Pokemon.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    hp_stat: {
+        type: DataTypes.INTEGER,
+        allowNull: false 
+      },
     attack_stat:{
         type: DataTypes.INTEGER,
         allowNull: false

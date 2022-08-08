@@ -1,4 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
+const User = require("./User");
 
 class Character extends Model {}
 
@@ -7,6 +8,10 @@ Character.init(
     level: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    hp_stat: {
+      type: DataTypes.INTEGER,
+      allowNull: false 
     },
     attack_stat: {
       type: DataTypes.INTEGER,
@@ -27,6 +32,10 @@ Character.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: User,
+        key: 'id'
+      }
     //   defaultValue: 1
     }
   },
