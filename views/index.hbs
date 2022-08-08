@@ -5,15 +5,15 @@
 
         <div class="user-text">
             <h2>PokéSlapper</h2>
-            <h1>{{user.user_name}}</h1>
+            <h1>{{user.dataValues.user_name}}</h1>
             <div class="avatar-display">
-                <img src="{{user.sprite}}" alt="avatar">
+                <img src={{charStats.sprite}} alt="avatar">
             </div>
             <div class="stats">
-                <span id="level">Level: {{user.level}}</span>
-                <span id="attack-stat">Attack: {{user.attack_stat}}</span>
-                <span id="defense-stat">Attack: {{user.defense_stat}}</span>
-                <span id="speed-stat">Attack: {{user.speed_stat}}</span>
+                <span id="level">Level: {{charStats.level}}</span>
+                <span id="attack-stat">speed: {{charStats.speed_stat}}</span>
+                <span id="defense-stat">Attack: {{charStats.attack_stat}}</span>
+                <span id="speed-stat">Defense: {{charStats.defense_stat}}</span>
             </div>
         </div>
 
