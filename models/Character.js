@@ -15,7 +15,7 @@ Character.init(
     },
     hp_stat: {
       type: DataTypes.INTEGER,
-      allowNull: false 
+      allowNull: false
     },
     attack_stat: {
       type: DataTypes.INTEGER,
