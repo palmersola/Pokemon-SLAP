@@ -135,6 +135,7 @@ connection.sync({ force: true }).then(() => {
       speed_stat: 50,
       sprite: "test"
     },
+
     {
       pokemon_name: "Rattata",
       experience: 100,
