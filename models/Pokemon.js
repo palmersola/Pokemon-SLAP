@@ -13,12 +13,22 @@ Pokemon.init(
       allowNull: false
     },
     hp_stat: {
+<<<<<<< HEAD
         type: DataTypes.INTEGER,
         allowNull: false 
       },
     attack_stat:{
         type: DataTypes.INTEGER,
         allowNull: false
+=======
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    attack_stat: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+>>>>>>> 0e519efd106912fb4631c060c8f49a3739cddb87
     },
     defense_stat: {
       type: DataTypes.INTEGER,
