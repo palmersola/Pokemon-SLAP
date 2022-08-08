@@ -15,7 +15,7 @@ Character.init(
     },
     hp_stat: {
       type: DataTypes.INTEGER,
-      allowNull: false 
+      allowNull: false
     },
     attack_stat: {
       type: DataTypes.INTEGER,
@@ -31,7 +31,7 @@ Character.init(
     },
     sprite: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     userId: {
       type: DataTypes.INTEGER,
