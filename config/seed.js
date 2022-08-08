@@ -1,3 +1,4 @@
+
 const Character = require("../models/Character");
 const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
@@ -22,6 +23,7 @@ connection.sync({ force: true }).then(() => {
       password: bcrypt.hashSync("testing", 10)
     }
   ]);
+
 
   Character.bulkCreate([
     {
@@ -123,6 +125,7 @@ connection.sync({ force: true }).then(() => {
       speed_stat: 50,
       sprite: "test"
     },
+
     {
       pokemon_name: "Rattata",
       experience: 100,
@@ -149,3 +152,5 @@ connection.sync({ force: true }).then(() => {
     }
   ]);
 });
+]);
+

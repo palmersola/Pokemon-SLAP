@@ -18,8 +18,9 @@ header {
 }
 
 header a {
-    text-decoration: none;
-    color: rgb(0, 119, 255);
+  text-decoration: none;
+  color: rgb(0, 119, 255);
+
 }
 
 header a:hover{
@@ -181,3 +182,4 @@ header a:hover{
     padding: 5px;
     justify-content: center;
 }
+
