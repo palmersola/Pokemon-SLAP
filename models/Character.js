@@ -31,7 +31,7 @@ Character.init(
     },
     sprite: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     userId: {
       type: DataTypes.INTEGER,

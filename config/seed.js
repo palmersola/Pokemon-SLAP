@@ -1,16 +1,11 @@
 const Character = require("../models/Character");
 const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
-<<<<<<< HEAD
-const bcrypt = require('bcrypt');
-const axios = require('axios');
-=======
 const axios = require("axios");
 const bcrypt = require("bcrypt");
->>>>>>> 0e519efd106912fb4631c060c8f49a3739cddb87
 const seedPokes = [1, 4, 7, 10, 13, 16, 19];
 const connection = require("./connection");
-connection.sync({ force: true }).then(() => {
+connection.sync({ force: true });
   async function pokePuller() {
     for (let i = 0; i < seedPokes.length; i++) {
       let retPokeCall = await pokeApiCaller(i);
@@ -34,9 +29,9 @@ connection.sync({ force: true }).then(() => {
     );
     return apiCall;
   }
-  pokePuller();
 
-<<<<<<< HEAD
+pokePuller();
+
 User.bulkCreate([
   {
     user_name: "Derek",
@@ -94,64 +89,3 @@ Character.bulkCreate([
     userId: 4
   }
 ]);
-
-=======
-  User.bulkCreate([
-    {
-      user_name: "Derek",
-      password: bcrypt.hashSync("testing", 10)
-    },
-    {
-      user_name: "Mustafa",
-      password: bcrypt.hashSync("testing", 10)
-    },
-    {
-      user_name: "Andy",
-      password: bcrypt.hashSync("testing", 10)
-    },
-    {
-      user_name: "Palmer",
-      password: bcrypt.hashSync("testing", 10)
-    }
-  ]);
-
-  Character.bulkCreate([
-    {
-      level: 1,
-      hp_stat: 100,
-      attack_stat: 40,
-      defense_stat: 60,
-      speed_stat: 70,
-      sprite: "test",
-      userId: 1
-    },
-    {
-      level: 1,
-      hp_stat: 100,
-      attack_stat: 70,
-      defense_stat: 50,
-      speed_stat: 40,
-      sprite: "test",
-      userId: 2
-    },
-    {
-      level: 1,
-      hp_stat: 100,
-      attack_stat: 80,
-      defense_stat: 30,
-      speed_stat: 40,
-      sprite: "test",
-      userId: 3
-    },
-    {
-      level: 1,
-      hp_stat: 100,
-      attack_stat: 40,
-      defense_stat: 80,
-      speed_stat: 30,
-      sprite: "ballguy.png",
-      userId: 4
-    }
-  ]);
-});
->>>>>>> 0e519efd106912fb4631c060c8f49a3739cddb87

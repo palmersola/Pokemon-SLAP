@@ -13,26 +13,30 @@ const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
   const { user_name, password, water, fire, grass } = req.body;
-  console.log(water);
+  console.log(req.body);
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
-  if (!water || !fire || !grass) {
+  if (!water && !fire && !grass) {
+    console.log('in error if');
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
   if (water) {
+    console.log('in water if');
     hp = "";
     attack = "";
     defense = "";
     speed = "";
   } else if (fire) {
+    console.log('in fire if');
     hp = "";
     attack = "";
     defense = "";
     speed = "";
   } else if (grass) {
+    console.log('in grass if');
     hp = "";
     attack = "";
     defense = "";
