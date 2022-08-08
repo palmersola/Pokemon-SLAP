@@ -88,8 +88,9 @@ header a:hover{
   font-size: 30px;
   border: rgba(0, 0, 0, 0.446) 3px dotted;
   margin: 2%;
-  max-width: 200px;
-  padding-left: 2%;
+  min-width: 400px;
+  max-width: 600px;
+  padding: 2%;
   align-self: center;
 }
 
@@ -183,3 +184,8 @@ header a:hover{
     justify-content: center;
 }
 
+.sprite-container {
+  display: flex;
+  flex-flow: row wrap;
+  min-width: 300px;
+}
