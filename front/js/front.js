@@ -27,7 +27,7 @@ async function turn() {
       slapping = false;
       console.log("turn func " + oppHp);
       await koCheck();
-    }, 500);
+    }, 1000);
   } else {
     plyHp = await opponentSlap();
     await koCheck();
@@ -36,7 +36,7 @@ async function turn() {
       console.log("turn func " + oppHp);
       slapping = false;
       await koCheck();
-    }, 500);
+    }, 1000);
   }
 }
 
