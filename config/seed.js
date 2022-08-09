@@ -31,6 +31,7 @@ const connection = require("./connection");
   }
 
   pokePuller();
+
 User.bulkCreate([
   {
     user_name: "Derek",
@@ -85,6 +86,65 @@ Character.bulkCreate([
   },
 
 ]);
+
+  User.bulkCreate([
+    {
+      user_name: "Derek",
+      password: bcrypt.hashSync("testing", 10)
+    },
+    {
+      user_name: "Mustafa",
+      password: bcrypt.hashSync("testing", 10)
+    },
+    {
+      user_name: "Andy",
+      password: bcrypt.hashSync("testing", 10)
+    },
+    {
+      user_name: "Palmer",
+      password: bcrypt.hashSync("testing", 10)
+    }
+  ]);
+
+  Character.bulkCreate([
+    {
+      level: 1,
+      hp_stat: 100,
+      attack_stat: 40,
+      defense_stat: 60,
+      speed_stat: 70,
+      sprite: "test",
+      userId: 1
+    },
+    {
+      level: 1,
+      hp_stat: 100,
+      attack_stat: 70,
+      defense_stat: 50,
+      speed_stat: 40,
+      sprite: "test",
+      userId: 2
+    },
+    {
+      level: 1,
+      hp_stat: 100,
+      attack_stat: 80,
+      defense_stat: 30,
+      speed_stat: 40,
+      sprite: "test",
+      userId: 3
+    },
+    {
+      level: 1,
+      hp_stat: 100,
+      attack_stat: 40,
+      defense_stat: 80,
+      speed_stat: 30,
+      sprite: "ballguy.png",
+      userId: 4
+    }
+  ]);
+
 
 
 pokePuller();
@@ -146,3 +206,4 @@ Character.bulkCreate([
     userId: 4
   }
 ]);
+

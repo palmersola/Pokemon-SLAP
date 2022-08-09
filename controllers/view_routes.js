@@ -5,14 +5,12 @@ const view_router = require("express").Router();
 
 //this will be the main page that will take us to the register/login page
 view_router.get("/", (req, res) => {
-  console.log(req.session.user_id);
   if (req.session.user_id) {
     return User.findByPk(req.session.user_id, {
       include: Character
     }).then(user => {
       console.log(user);
       const charStats = user.dataValues.character.dataValues;
-      console.log(charStats);
       res.render("index", { charStats: { ...charStats }, user: { ...user } });
     });
   }
