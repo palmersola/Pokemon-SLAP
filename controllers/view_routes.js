@@ -36,8 +36,8 @@ view_router.get("/leaderboard", (req, res) => {
   res.render("leaderboard");
 });
 // this page will have the actual game
-view_router.get("/play", (req, res) => {
-  res.render("play");
-});
+// view_router.get("/play", (req, res) => {
+//   res.render("play");
+// });
 
 module.exports = view_router;

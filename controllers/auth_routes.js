@@ -13,45 +13,15 @@ let userId = "";
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
   const { user_name, password, water, fire, grass } = req.body;
-<<<<<<< HEAD
-  console.log(req.body);
-=======
-  console.log(fire);
-  console.log(water);
-  console.log(grass);
->>>>>>> d78ca4453813acb7f6cdc6eadb6472a454c7d71f
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
   if (!water && !fire && !grass) {
-<<<<<<< HEAD
-    console.log('in error if');
-=======
->>>>>>> d78ca4453813acb7f6cdc6eadb6472a454c7d71f
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
   if (water) {
-<<<<<<< HEAD
-    console.log('in water if');
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
-  } else if (fire) {
-    console.log('in fire if');
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
-  } else if (grass) {
-    console.log('in grass if');
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
-=======
     console.log("selecting water stats");
 
     hp = 44;
@@ -71,7 +41,6 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
     attack = 49;
     defense = 49;
     speed = 45;
->>>>>>> d78ca4453813acb7f6cdc6eadb6472a454c7d71f
   }
 
   User.findOne({
