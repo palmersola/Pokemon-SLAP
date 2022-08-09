@@ -4,34 +4,33 @@ const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
 const basePlyDef = plyDef;
 const basePlySpd = plySpd;
-const basePlyLevel = plyLevel;
-const baseOppHp = oppHp;
-const baseOppAtk = oppAtk;
-const baseOppDef = oppDef;
-const baseOppSpd = oppSpd;
+
 document.addEventListener("keyup", event => {
   if (event.code === "Space") {
     console.log("pokemon slapped");
+    event.preventDefault();
     turn();
   }
 });
+let newHp;
 
 async function turn() {
-  if (slappin) return;
-  slappin = true;
+  if (slapping) return;
+  slapping = true;
   if (plySpd > oppSpd) {
     oppHp = await playerSlap();
-    console.log(oppHp);
-    await setTimeout(async () => {
+    setTimeout(async () => {
       plyHp = await opponentSlap();
-      slappin = false;
-    }, 1000);
+      slapping = false;
+      await koCheck();
+    }, 500);
   } else {
     plyHp = await opponentSlap();
-    await setTimeout(async () => {
+    setTimeout(async () => {
       oppHp = await playerSlap();
-      slappin = false;
-    }, 1000);
+      slapping = false;
+      await koCheck();
+    }, 500);
   }
 }
 
@@ -39,39 +38,41 @@ async function playerSlap() {
   let dmg = Math.floor(
     (2 * plyLevel / 5 + 2) * 100 * (plyAtk / oppDef) / 50 + 2
   );
-  let newHp = Math.max(0, oppHp - dmg);
+  let newHp = oppHp - dmg;
+  console.log(dmg);
   document.getElementById("oppHp").innerText = newHp;
-  if (newHp === 0) {
-    return pokeKO();
-  }
 
-  document.getElementById("oppSprt").classList.add("animation");
+  document.getElementById("oppSprt").setAttribute("class", "animation");
   setTimeout(() => {
     document.getElementById("oppSprt").classList.remove("animation");
-  }, 300);
+  }, 400);
   return newHp;
 }
 
 async function opponentSlap() {
   let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
-  let newHp = Math.max(0, plyHp - dmg);
+  let newHp = plyHp - dmg;
   document.getElementById("plyHp").innerText = newHp;
-  if (newHp === 0) {
-    return plyKO();
-  }
 
-  document.getElementById("plySprt").classList.add("animation");
+  document.getElementById("plySprt").setAttribute("class", "animation");
   setTimeout(() => {
     document.getElementById("plySprt").classList.remove("animation");
-  }, 300);
+  }, 400);
 
   return newHp;
+}
+
+async function koCheck() {
+  if (oppHp < 1) {
+    return pokeKO();
+  } else if (plyHp < 1) {
+    return plyKO();
+  }
 }
 
 function pokeKO() {
   console.log("you KO'D pokemon");
   round++;
-  console.log(round);
   levelUp(round);
 }
 function plyKO() {
@@ -79,22 +80,46 @@ function plyKO() {
   loser();
 }
 
-function levelUp(round) {
+async function levelUp(round) {
+  console.log("level up called");
   // will increase stats and update them in db to current stats of the lvl
   let plyLevel = round;
-  let updatedPlyHp = Math.floor(
+  plyHp = Math.floor(
     0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
   );
-  let updatedPlyAtk = Math.floor(
-    0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk
+  plyAtk = Math.floor(0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk);
+  plyDef = Math.floor(0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef);
+  plySpd = Math.floor(0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd);
+  document.getElementById("plyHp").innerText = plyHp;
+  let nextPoke = await axios.get(`/play/${plyLevel}`);
+  console.log(nextPoke);
+  //update next pokemon stats based off level
+  oppHP = Math.floor(
+    0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
+      plyLevel +
+      10 +
+      nextPoke.data.hp_stat
   );
-  let updatedPlyDef = Math.floor(
-    0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef
+  oppAtk = Math.floor(
+    0.01 * (2 * nextPoke.data.attack_stat * plyLevel) +
+      5 +
+      nextPoke.data.attack_stat
   );
-  let updatedPlySpd = Math.floor(
-    0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd
+  oppDef = Math.floor(
+    0.01 * (2 * nextPoke.data.defense_stat * plyLevel) +
+      5 +
+      nextPoke.data.defense_stat
   );
-  document.getElementById("plyHp").innerText = updatedPlyHp;
+  oppSpd = Math.floor(
+    0.01 * (2 * nextPoke.data.speed_stat * plyLevel) +
+      5 +
+      nextPoke.data.speed_stat
+  );
+  //update image source
+  console.log(`HP: ${oppHP} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
+  document.getElementById("oppSprt").src = nextPoke.data.sprite;
+  document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
+  document.getElementById("oppHp").innerText = oppHP;
 }
 function loser() {
   // saves score and adds it to leaderboard and resets the game to start
