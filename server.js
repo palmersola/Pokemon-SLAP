@@ -51,12 +51,14 @@ app.use(
 );
 
 // load view routes for root route
-app.use("/", view_routes);
+app.use("/", view_routes, pokemon_routes);
 // load auth routes
 app.use("/auth", auth_routes);
 
 app.use("/characters", character_routes);
 // app.use("/pokemon", pokemon_routes);
+// load pokemon_routes for pokemon info pull from database
+// app.use("/play", pokemon_routes);
 
 // sync db tables
 db.sync({ force: false }).then(() => {
