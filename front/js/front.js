@@ -9,6 +9,10 @@ const baseOppHp = oppHp;
 const baseOppAtk = oppAtk;
 const baseOppDef = oppDef;
 const baseOppSpd = oppSpd;
+let slap = new Audio("/assets/slap.mp3");
+slap.volume = 0.25;
+let bossin = new Audio("/assets/thatsbossin.mp3");
+bossin.volume = 1;
 document.addEventListener("keyup", event => {
   if (event.code === "Space") {
     console.log("pokemon slapped");
@@ -42,9 +46,11 @@ async function playerSlap() {
   let newHp = Math.max(0, oppHp - dmg);
   document.getElementById("oppHp").innerText = newHp;
   if (newHp === 0) {
+    bossin.play();
     return pokeKO();
   }
 
+  slap.play();
   document.getElementById("oppSprt").classList.add("animation");
   setTimeout(() => {
     document.getElementById("oppSprt").classList.remove("animation");
@@ -59,6 +65,7 @@ async function opponentSlap() {
   if (newHp === 0) {
     return plyKO();
   }
+  slap.play();
 
   document.getElementById("plySprt").classList.add("animation");
   setTimeout(() => {
