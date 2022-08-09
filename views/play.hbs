@@ -15,11 +15,10 @@
                 <img src="{{opponent.dataValues.sprite}}" id="oppSprt" alt="pokemon sprite">
             </div>
             <div class="poke-stats">
-                <span class="hp-stat"> {{opponent.dataValues.pokemon_name}} HP: <span id="oppHp">{{opponent.dataValues.hp_stat}}</span></span>
+                <span class="hp-stat"> <span id="oppName">{{opponent.dataValues.pokemon_name}}</span> HP: <span id="oppHp">{{opponent.dataValues.hp_stat}}</span></span>
             </div>
         </div>
     </div>
-
 </div>
 <script>
     let plyHp = {{player.dataValues.hp_stat}};
