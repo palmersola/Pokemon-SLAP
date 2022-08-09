@@ -4,9 +4,15 @@
   box-sizing: border-box;
   font-family: VT323;
 }
+
 img {
   max-width: 100%;
 }
+
+body {
+  background-color: rgba(208, 255, 99, 0.377);
+}
+
 /* GLOBAL CLASSES */
 .hidden {
   display: none
@@ -14,6 +20,7 @@ img {
 
 /* CUSTOM STYLING */
 header {
+  background-color: rgba(144, 185, 72, 0.72);
   display: flex;
   justify-content: space-between;
   padding: 9px 2%;
@@ -87,6 +94,7 @@ header a:hover {
 }
 
 .settings {
+  background-color: rgba(222, 219, 219, 0.93);
   font-size: 30px;
   border: rgba(0, 0, 0, 0.446) 3px dotted;
   border-radius: 5px;
@@ -260,6 +268,7 @@ header a:hover {
   }
   
   .game-container {
+    position: relative;
     border-radius: 10px;
     background-image: url(https://p4.wallpaperbetter.com/wallpaper/503/189/157/video-games-pokemon-pixels-pixel-art-wallpaper-preview.jpg);
     background-position: bottom;
@@ -297,6 +306,16 @@ header a:hover {
   
   .poke-sprite img {
     width: 175px;
+  }
+
+  .game-over h1#gameOver {
+    position: absolute;
+    width: 400px;
+    color: red;
+    font-size: 110px;
+    text-align: center;
+    justify-content: center;
+    margin: 20% 20%;
   }
   
   button.replayBtn {
