@@ -15,7 +15,7 @@ body {
 
 /* GLOBAL CLASSES */
 .hidden {
-  display: none
+  display: none;
 }
 
 /* CUSTOM STYLING */
@@ -118,13 +118,13 @@ header a:hover {
   border: none;
   border-radius: 5px;
   background-color: rgb(122, 188, 7);
-  transition: .1s;
+  transition: 0.1s;
 }
 
 #spriteBtn:hover {
   font-style: italic;
   background-color: rgba(200, 255, 0, 0.789);
-  color: rgb(68, 141, 0)
+  color: rgb(68, 141, 0);
 }
 
 #playBtn {
@@ -136,9 +136,8 @@ header a:hover {
   border-radius: 5px;
   padding: 5px 10px;
   justify-content: center;
-  transition: .1s;
+  transition: 0.1s;
 }
-
 
 #playBtn:hover {
   font-style: italic;
@@ -147,232 +146,240 @@ header a:hover {
 
 .sprite-container img {
   padding: 5px;
-  transition: .1s;
+  transition: 0.1s;
 }
 
 .sprite-container img:hover {
   background-color: rgba(251, 235, 134, 0.916);
   border-radius: 50%;
-  animation: fadeIn .5s;
-    opacity: 1;
-  }
+  animation: fadeIn 0.5s;
+  opacity: 1;
+}
 
+/* Login page */
 
-  /* Login page */
-  
-  .form-container {
-    padding: 20px;
-    margin: auto;
-    transform: translateY(100%);
-  }
-  
-  .form-container form {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    max-width: 400px;
-  }
-  
-  .form-container input {
-    padding: 6px 8px;
-    margin: 1%;
-    font-size: 25px;
-  }
-  
-  .submitBtn {
-    font-size: 25px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgb(127, 160, 70);
-  }
-  
-  .submitBtn:hover {
-    font-style: italic;
-    background-color: rgb(94, 153, 5);
-  }
-  
-  /* register page */
-  
-  .register-page-wrapper {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  .reg-container {
-    width: 500px;
-    margin: auto;
-  }
-  
-  .reg-container form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-  }
-  
-  .reg-container input {
-    padding: 6px 8px;
-    margin: 1%;
-    font-size: 25px;
-  }
-  
-  .reg-type-container {
-    width: 400px;
-    text-align: center;
-  }
-  
-  .reg-type-container p {
-    font-size: 25px;
-  }
-  
-  .input-rows {
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 5px;
-    justify-content: center;
-  }
-  
-  .sprite-container {
-    display: flex;
-    flex-flow: row wrap;
-    min-width: 300px;
-  }
-  
-  .sprite-container input {
-    display: none;
-  }
+.form-container {
+  padding: 20px;
+  margin: auto;
+  transform: translateY(100%);
+}
 
-  /* .center-wrapper {
+.form-container form {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.form-container input {
+  padding: 6px 8px;
+  margin: 1%;
+  font-size: 25px;
+}
+
+.submitBtn {
+  font-size: 25px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(127, 160, 70);
+}
+
+.submitBtn:hover {
+  font-style: italic;
+  background-color: rgb(94, 153, 5);
+}
+
+/* register page */
+
+.register-page-wrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.reg-container {
+  width: 500px;
+  margin: auto;
+}
+
+.reg-container form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.reg-container input {
+  padding: 6px 8px;
+  margin: 1%;
+  font-size: 25px;
+}
+
+.reg-type-container {
+  width: 400px;
+  text-align: center;
+}
+
+.reg-type-container p {
+  font-size: 25px;
+}
+
+.input-rows {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+  justify-content: center;
+}
+
+.sprite-container {
+  display: flex;
+  flex-flow: row wrap;
+  min-width: 300px;
+}
+
+.sprite-container input {
+  display: none;
+}
+
+/* .center-wrapper {
     display: flexbox;
     flex-direction: column;
 
   }
    */
-  .center-wrapper h1{
-    justify-content: center;
-    text-align: center;
-    color:rgb(118, 116, 116)
-  }
-  
-  .center-wrapper h1.round-count {
-    width: fit-content;
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0px 30px;
-    font-size: 80px;
-    border: 2px solid rgb(118, 116, 116);
-    border-radius: 5px;
-    background-color: rgb(122, 188, 7);
-    color:aliceblue;
-  }
-  
-  .game-container {
-    position: relative;
-    border-radius: 10px;
-    background-image: url(https://p4.wallpaperbetter.com/wallpaper/503/189/157/video-games-pokemon-pixels-pixel-art-wallpaper-preview.jpg);
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 800px;
-    height: 420px;
-    margin: 75px auto 20px auto; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  
-  .game-container .hp-stat {
-    font-size: 28px;
-    padding: 2px 10px;
-    background-color: rgb(118, 116, 116);
-    color: rgb(255, 68, 0);
-    border-radius: 6px;
-  }
-  
-  .player,
-  .poke {
-    margin: 25% 60px;
-  }
-  
-  .button-container a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .player-sprite img {
-    width: 175px;
-  }
-  
-  .poke-sprite img {
-    width: 175px;
-  }
+.center-wrapper h1 {
+  justify-content: center;
+  text-align: center;
+  color: rgb(118, 116, 116);
+}
 
-  .game-over h1#gameOver {
-    position: absolute;
-    width: 400px;
-    color: red;
-    font-size: 110px;
-    text-align: center;
-    justify-content: center;
-    margin: 20% 20%;
+.center-wrapper h1.round-count {
+  width: fit-content;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 30px;
+  font-size: 80px;
+  border: 2px solid rgb(118, 116, 116);
+  border-radius: 5px;
+  background-color: rgb(122, 188, 7);
+  color: aliceblue;
+}
+
+.game-container {
+  position: relative;
+  border-radius: 10px;
+  background-image: url(https://p4.wallpaperbetter.com/wallpaper/503/189/157/video-games-pokemon-pixels-pixel-art-wallpaper-preview.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 800px;
+  height: 420px;
+  margin: 75px auto 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.game-container .hp-stat {
+  font-size: 28px;
+  padding: 2px 10px;
+  background-color: rgb(118, 116, 116);
+  color: rgb(255, 68, 0);
+  border-radius: 6px;
+}
+
+.player,
+.poke {
+  position: absolute;
+  bottom: -198px;
+  margin: 25% 60px;
+}
+.player {
+  left: 40px;
+}
+.poke {
+  right: 40px;
+}
+
+.button-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.player-sprite img {
+  width: 225px;
+}
+
+.poke-sprite img {
+  width: 100px;
+}
+
+.game-over h1#gameOver {
+  position: absolute;
+  width: 400px;
+  color: red;
+  font-size: 110px;
+  text-align: center;
+  justify-content: center;
+  margin: 20% 20%;
+  visibility: hidden;
+}
+
+button.replayBtn {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 0 auto;
+  background-color: rgb(122, 188, 7);
+  transition: 0.15s;
+}
+.replayBtn:hover {
+  font-style: italic;
+  background-color: rgb(157, 213, 106);
+}
+
+/* leaderboard syles */
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard .display-leader {
+  justify-content: space-around;
+  margin: 10px auto;
+  border: 2px solid gold;
+  border-radius: 0px 8px 0px 8px;
+  padding: 15px 80px;
+  font-size: 30px;
+  transition: 0.222s;
+}
+
+.leaderboard .display-leader:hover {
+  background-color: rgba(200, 255, 0, 0.573);
+}
+
+/* KEYFRAMES */
+
+.animation {
+  animation: shake 0.2s;
+  animation-iteration-count: once;
+  filter: blur(2px);
+  filter: grayscale(40%);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  button.replayBtn {
-    padding: 5px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    margin: 0 auto;
-    background-color: rgb(122, 188, 7);
-    transition: .15s;
+  to {
+    opacity: 1;
   }
-  .replayBtn:hover {
-    font-style: italic;
-    background-color: rgb(157, 213, 106);
-  }
-  
-  /* leaderboard syles */
-  
-  .leaderboard {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .leaderboard .display-leader {
-    justify-content: space-around;
-    margin: 10px auto;
-    border: 2px solid gold;
-    border-radius: 0px 8px 0px 8px;
-    padding: 15px 80px;
-    font-size: 30px;
-    transition: .222s;
-  }
-  
-  .leaderboard .display-leader:hover {
-    background-color: rgba(200, 255, 0, 0.573);
-  }
-  
-  /* KEYFRAMES */
-  
-  .animation {
-    animation: shake 0.2s;
-    animation-iteration-count: once;
-    filter: blur(2px);
-    filter: grayscale(40%);
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-     opacity: 1;
-    }
-  }
-  
-  @keyframes shake {
-    0% {
-      transform: translate(12px, 10px) rotate(2deg);
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(12px, 10px) rotate(2deg);
   }
   10% {
     transform: translate(-5px, -9px) rotate(-2deg);
