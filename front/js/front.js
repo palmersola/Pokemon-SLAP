@@ -1,5 +1,4 @@
 let slapping = false;
-let round = 1;
 const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
 const basePlyDef = plyDef;
@@ -22,15 +21,19 @@ async function turn() {
   slapping = true;
   if (plySpd > oppSpd) {
     oppHp = await playerSlap();
+    await koCheck();
     setTimeout(async () => {
       plyHp = await opponentSlap();
       slapping = false;
+      console.log("turn func " + oppHp);
       await koCheck();
     }, 500);
   } else {
     plyHp = await opponentSlap();
+    await koCheck();
     setTimeout(async () => {
       oppHp = await playerSlap();
+      console.log("turn func " + oppHp);
       slapping = false;
       await koCheck();
     }, 500);
@@ -44,7 +47,7 @@ async function playerSlap() {
   let newHp = oppHp - dmg;
   console.log(dmg);
   document.getElementById("oppHp").innerText = newHp;
-
+  slap.play();
   document.getElementById("oppSprt").setAttribute("class", "animation");
   setTimeout(() => {
     document.getElementById("oppSprt").classList.remove("animation");
@@ -56,7 +59,7 @@ async function opponentSlap() {
   let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
   let newHp = plyHp - dmg;
   document.getElementById("plyHp").innerText = newHp;
-
+  slap.play();
   document.getElementById("plySprt").setAttribute("class", "animation");
   setTimeout(() => {
     document.getElementById("plySprt").classList.remove("animation");
@@ -67,12 +70,14 @@ async function opponentSlap() {
 
 async function koCheck() {
   if (oppHp < 1) {
+    bossin.play();
     return pokeKO();
   } else if (plyHp < 1) {
     return plyKO();
   }
 }
 
+let round = 1;
 function pokeKO() {
   console.log("you KO'D pokemon");
   round++;
@@ -97,7 +102,7 @@ async function levelUp(round) {
   let nextPoke = await axios.get(`/play/${plyLevel}`);
   console.log(nextPoke);
   //update next pokemon stats based off level
-  oppHP = Math.floor(
+  oppHp = Math.floor(
     0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
       plyLevel +
       10 +
@@ -118,11 +123,13 @@ async function levelUp(round) {
       5 +
       nextPoke.data.speed_stat
   );
+  console.log("level up func oppHP" + oppHp);
   //update image source
-  console.log(`HP: ${oppHP} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
+  console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
   document.getElementById("oppSprt").src = nextPoke.data.sprite;
   document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
-  document.getElementById("oppHp").innerText = oppHP;
+  document.getElementById("oppHp").innerText = oppHp;
+  document.getElementById("level").innerText = round;
 }
 function loser() {
   // saves score and adds it to leaderboard and resets the game to start
