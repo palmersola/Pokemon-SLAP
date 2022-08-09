@@ -191,9 +191,24 @@ header a:hover {
   display: none;
 }
 
-/* .center-wrapper {
-  align-content: center;
-} */
+.center-wrapper h1{
+  justify-content: center;
+  text-align: center;
+  color:rgb(118, 116, 116)
+}
+
+.center-wrapper h1.round-count {
+  width: fit-content;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 30px;
+  font-size: 80px;
+  border: 2px solid rgb(118, 116, 116);
+  border-radius: 5px;
+  background-color: rgb(122, 188, 7);
+  color:aliceblue;
+}
 
 .game-container {
   border-radius: 10px;
@@ -203,7 +218,7 @@ header a:hover {
   background-size: cover;
   max-width: 800px;
   height: 420px;
-  margin: 200px auto;
+  margin: 75px auto 20px auto; 
   display: flex;
   flex-direction: row;
   justify-content: space-around;
