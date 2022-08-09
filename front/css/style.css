@@ -241,7 +241,8 @@ header a:hover {
 }
 
 /* KEYFRAMES */
-img:hover {
+
+.animation {
   animation: shake 0.2s;
   animation-iteration-count: once;
   filter: blur(2px);
