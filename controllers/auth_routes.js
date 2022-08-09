@@ -5,38 +5,37 @@ const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
 
 const { isLoggedIn } = require("./helpers");
-
+let userId = "";
 // let hp = "";
 // let attack = "";
 // let defense = "";
 // let speed = "";
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
-  const { user_name, password, water, fire, grass } = req.body;
-  console.log(water);
+  const { user_name, password, type } = req.body;
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
-  if (!water || !fire || !grass) {
+  if (!type) {
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
-  if (water) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
-  } else if (fire) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
-  } else if (grass) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
+  if (type === "water") {
+    hp = 44;
+    attack = 48;
+    defense = 65;
+    speed = 43;
+  } else if (type === "fire") {
+    hp = 39;
+    attack = 52;
+    defense = 43;
+    speed = 65;
+  } else if (type === "grass") {
+    hp = 45;
+    attack = 49;
+    defense = 49;
+    speed = 45;
   }
 
   User.findOne({
@@ -48,19 +47,23 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
       req.session.errors = ["A user already exists with that username."];
       return res.redirect("/register");
     }
-    User.create(req.body)
+    User.create({
+      user_name: req.body.user_name,
+      password: req.body.password
+    })
       .then(new_user => {
+        userId = new_user.id;
         Character.create({
           hp_stat: hp,
           attack_stat: attack,
           defense_stat: defense,
           speed_stat: speed,
-          userId: new_user.id
+          userId: userId
         });
       })
       .then(new_user => {
         req.session.save(() => {
-          req.session.user_id = new_user.id;
+          req.session.user_id = userId;
           res.redirect("/");
         });
       })
@@ -93,7 +96,6 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     if (!pass_is_valid) {
       req.session.errors = ["Your password is incorrect"];
       res.redirect("/login");
-      console.log("Yerp");
       return;
     }
     req.session.save(() => {

@@ -39,6 +39,25 @@ character_router.post("/", (req, res) => {
     res.json(new_Character);
   });
 });
+character_router.post("/sprite/", (req, res) => {
+  // update a Character's name by its `id` value
+  // console.log("test");
+  // const { sprite } = req.body;
+  console.log(req.body);
+  Character.update(
+    {
+      sprite: req.body.sprite + ".png"
+    },
+    {
+      where: {
+        // id: req.session.user_id,
+        userId: req.session.user_id
+      }
+    }
+  ).then(updated_Character => {
+    res.redirect("/");
+  });
+});
 
 character_router.put("/:id", (req, res) => {
   // update a Character's name by its `id` value

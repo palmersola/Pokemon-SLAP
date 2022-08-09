@@ -5,13 +5,12 @@ const view_router = require("express").Router();
 
 //this will be the main page that will take us to the register/login page
 view_router.get("/", (req, res) => {
-  console.log(req.session.user_id);
   if (req.session.user_id) {
     return User.findByPk(req.session.user_id, {
       include: Character
     }).then(user => {
+      console.log(user);
       const charStats = user.dataValues.character.dataValues;
-      console.log(charStats);
       res.render("index", { charStats: { ...charStats }, user: { ...user } });
     });
   }
@@ -36,8 +35,8 @@ view_router.get("/leaderboard", (req, res) => {
   res.render("leaderboard");
 });
 // this page will have the actual game
-view_router.get("/play", (req, res) => {
-  res.render("play");
-});
+// view_router.get("/play", (req, res) => {
+//   res.render("play");
+// });
 
 module.exports = view_router;
