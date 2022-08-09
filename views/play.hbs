@@ -1,5 +1,5 @@
 <div class="center-wrapper">
-    <h1 class="round-count">Level: {{player.dataValues.level}}</h1>
+    <h1 class="round-count">Level: <span id="level">{{player.dataValues.level}}</span></h1>
     <div class="game-container">
         <div class="game-over">
             <h1 id="gameOver">GAME OVER</h1>
@@ -22,14 +22,11 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
     <h1>press spacebar to slap your opponent</h1>
     
     <div class="button-container">
         <button class="hidden replayBtn">play again</button>
     </div>
->>>>>>> main
 </div>
 <script>
     let plyHp = {{player.dataValues.hp_stat}};
