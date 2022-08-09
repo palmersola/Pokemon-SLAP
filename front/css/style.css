@@ -20,40 +20,37 @@ header {
 header a {
   text-decoration: none;
   color: rgb(0, 119, 255);
-
 }
 
-header a:hover{
-    font-style: italic;
-    color: rgb(94, 153, 5);
+header a:hover {
+  font-style: italic;
+  color: rgb(94, 153, 5);
 }
 
 /* index if not logged in */
 
 .login-reg-container {
-    background-color: rgba(190, 242, 68, 0.377);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(70%);
-    max-width: 300px;
-    font-size: 45px;
-    padding: 5%;
-    text-align: center;
-    border: solid 3px rgba(75, 74, 74, 0.674);
-    border-radius: 4px;
-
-
+  background-color: rgba(190, 242, 68, 0.377);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(70%);
+  max-width: 300px;
+  font-size: 45px;
+  padding: 5%;
+  text-align: center;
+  border: solid 3px rgba(75, 74, 74, 0.674);
+  border-radius: 4px;
 }
 .login-reg-container a {
-    text-decoration: none;
-    color: rgb(94, 153, 5);
-    padding: 10px;
+  text-decoration: none;
+  color: rgb(94, 153, 5);
+  padding: 10px;
 }
 
 .login-reg-container a:hover {
-    color: rgb(68, 141, 0);
-    font-style: italic;
+  color: rgb(68, 141, 0);
+  font-style: italic;
 }
 
 /* index if logged in! */
@@ -113,82 +110,85 @@ header a:hover{
 /* Login page */
 
 .form-container {
-    padding: 20px;
-    margin: auto;
-    transform: translateY(100%);
+  padding: 20px;
+  margin: auto;
+  transform: translateY(100%);
 }
 
 .form-container form {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    max-width: 400px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  max-width: 400px;
 }
 
 .form-container input {
-    padding: 6px 8px;
-    margin: 1%;
-    font-size: 25px;
+  padding: 6px 8px;
+  margin: 1%;
+  font-size: 25px;
 }
 
 .submitBtn {
-    font-size: 25px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgb(127, 160, 70);
+  font-size: 25px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(127, 160, 70);
 }
 
 .submitBtn:hover {
-    font-style: italic;
-    background-color: rgb(94, 153, 5);
+  font-style: italic;
+  background-color: rgb(94, 153, 5);
 }
 
 /* register page */
 
 .register-page-wrapper {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 .reg-container {
-    width: 500px;
-    margin: auto;
+  width: 500px;
+  margin: auto;
 }
 
 .reg-container form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
 }
 
 .reg-container input {
-    padding: 6px 8px;
-    margin: 1%;
-    font-size: 25px;
+  padding: 6px 8px;
+  margin: 1%;
+  font-size: 25px;
 }
 
 .reg-type-container {
-    width: 400px;
-    text-align: center;
-
+  width: 400px;
+  text-align: center;
 }
 
 .reg-type-container p {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .input-rows {
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 5px;
-    justify-content: center;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+  justify-content: center;
 }
 
 .sprite-container {
   display: flex;
   flex-flow: row wrap;
   min-width: 300px;
+}
+
+.sprite-container input {
+  display: none;
 }
 
 /* .center-wrapper {
@@ -199,7 +199,7 @@ header a:hover{
   border-radius: 10px;
   background-image: url(https://p4.wallpaperbetter.com/wallpaper/503/189/157/video-games-pokemon-pixels-pixel-art-wallpaper-preview.jpg);
   background-position: bottom;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover;
   max-width: 800px;
   height: 420px;
@@ -212,12 +212,13 @@ header a:hover{
 .game-container .hp-stat {
   font-size: 28px;
   padding: 2px 10px;
-  background-color:rgb(118, 116, 116);
+  background-color: rgb(118, 116, 116);
   color: rgb(255, 68, 0);
   border-radius: 6px;
 }
 
-.player, .poke {
+.player,
+.poke {
   margin: 25% 60px;
 }
 
@@ -239,25 +240,46 @@ header a:hover{
   justify-self: center;
 }
 
-
 /* KEYFRAMES */
 img:hover {
   animation: shake 0.2s;
   animation-iteration-count: once;
   filter: blur(2px);
-  filter: grayscale(40%)
+  filter: grayscale(40%);
 }
 
 @keyframes shake {
-  0% { transform: translate(12px, 10px) rotate(2deg); }
-  10% { transform: translate(-5px, -9px) rotate(-2deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(12px, 10px) rotate(2deg);
+  }
+  10% {
+    transform: translate(-5px, -9px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
