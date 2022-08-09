@@ -1,4 +1,4 @@
-let slappin = false;
+let slapping = false;
 let round = 1;
 const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
