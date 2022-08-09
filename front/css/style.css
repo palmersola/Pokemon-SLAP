@@ -319,13 +319,12 @@ header a:hover {
   width: 400px;
   color: red;
   font-size: 110px;
-  text-align: center;
-  justify-content: center;
+  left: 40px;
   margin: 20% 20%;
   visibility: hidden;
 }
 
-button.replayBtn {
+#replayBtn {
   padding: 5px 20px;
   border: none;
   border-radius: 5px;
@@ -333,6 +332,7 @@ button.replayBtn {
   margin: 0 auto;
   background-color: rgb(122, 188, 7);
   transition: 0.15s;
+  visibility: hidden;
 }
 .replayBtn:hover {
   font-style: italic;

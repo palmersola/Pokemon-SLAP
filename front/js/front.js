@@ -1,8 +1,10 @@
+
 let slapping = false;
 const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
 const basePlyDef = plyDef;
 const basePlySpd = plySpd;
+
 let slap = new Audio("/assets/slap.mp3");
 slap.volume = 0.25;
 let bossin = new Audio("/assets/thatsbossin.mp3");
@@ -14,6 +16,9 @@ document.addEventListener("keyup", event => {
     turn();
   }
 });
+
+
+
 let newHp;
 
 async function turn() {
@@ -21,22 +26,20 @@ async function turn() {
   slapping = true;
   if (plySpd > oppSpd) {
     oppHp = await playerSlap();
-    await koCheck();
     setTimeout(async () => {
-      plyHp = await opponentSlap();
-      slapping = false;
-      console.log("turn func " + oppHp);
-      await koCheck();
-    }, 1000);
+      if(!koCheck()) {
+        plyHp = await opponentSlap();
+        slapping = false
+    };
+    }, 100);
   } else {
     plyHp = await opponentSlap();
-    await koCheck();
     setTimeout(async () => {
-      oppHp = await playerSlap();
-      console.log("turn func " + oppHp);
-      slapping = false;
-      await koCheck();
-    }, 1000);
+      if(koCheck()) {
+        oppHp = await playerSlap();
+        slapping = false;
+    };
+    }, 100);
   }
 }
 
@@ -82,10 +85,12 @@ function pokeKO() {
   console.log("you KO'D pokemon");
   round++;
   levelUp(round);
+  return true;
 }
 function plyKO() {
   console.log("you were KO'D by pokemon");
   loser();
+  return false;
 }
 
 async function levelUp(round) {
@@ -131,10 +136,18 @@ async function levelUp(round) {
   document.getElementById("oppHp").innerText = oppHp;
   document.getElementById("level").innerText = round;
 }
-function loser() {
-  // saves score and adds it to leaderboard and resets the game to start
-  let updatedPlyHp = plyHp;
-  let updatedPlyAtk = plyAtk;
-  let updatedPlyLevel = plyLevel;
-  let updatedPlyDef = plyDef;
+async function loser() {
+  console.log("Loser Called");
+  slapping = true;
+  let gameOver = document.getElementById('gameOver');
+  gameOver.style.visibility = "Visible";
+  let replay = document.getElementById('replayBtn');
+  replay.style.visibility = "Visible";
+  replay.addEventListener("click", function () {
+
+    window.location.replace("http://localhost:3333/play")
+  })
+  
 }
+
+
