@@ -22,4 +22,8 @@ pokemon_routes.get('/play/:id', async (req, res) => {
 
 })
 
+pokemon_routes.get('/play/leaderboard', async (req, res) => {
+  res.render('leaderboard');
+})
+
 module.exports = pokemon_routes;
