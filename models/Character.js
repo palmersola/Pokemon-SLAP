@@ -27,7 +27,8 @@ Character.init(
     },
     sprite: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false,
+      defaultValue: "ash.png"
     },
     userId: {
       type: DataTypes.INTEGER,

@@ -14,12 +14,7 @@ const SeqStore = require("connect-session-sequelize")(sesh.Store);
 require("dotenv").config();
 
 // import routes
-const {
-  view_routes,
-  auth_routes,
-  character_routes,
-  pokemon_routes
-} = require("./controllers");
+const { view_routes, auth_routes, character_routes } = require("./controllers");
 
 // create app obj from express
 const app = express();

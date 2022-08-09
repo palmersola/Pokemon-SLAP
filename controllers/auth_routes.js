@@ -12,34 +12,26 @@ let userId = "";
 // let speed = "";
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
-  const { user_name, password, water, fire, grass } = req.body;
-  console.log(fire);
-  console.log(water);
-  console.log(grass);
+  const { user_name, password, type } = req.body;
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
-  if (!water && !fire && !grass) {
+  if (!type) {
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
-  if (water) {
-    console.log("selecting water stats");
-
+  if (type === "water") {
     hp = 44;
     attack = 48;
     defense = 65;
     speed = 43;
-  } else if (fire) {
-    console.log("selecting fire stats");
+  } else if (type === "fire") {
     hp = 39;
     attack = 52;
     defense = 43;
     speed = 65;
-  } else if (grass) {
-    console.log("selecting fire stats");
-
+  } else if (type === "grass") {
     hp = 45;
     attack = 49;
     defense = 49;
@@ -104,7 +96,6 @@ auth_router.post("/login", isLoggedIn, (req, res) => {
     if (!pass_is_valid) {
       req.session.errors = ["Your password is incorrect"];
       res.redirect("/login");
-      console.log("Yerp");
       return;
     }
     req.session.save(() => {
