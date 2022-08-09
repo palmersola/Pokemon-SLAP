@@ -7,7 +7,12 @@
 img {
   max-width: 100%;
 }
+/* GLOBAL CLASSES */
+.hidden {
+  display: none
+}
 
+/* CUSTOM STYLING */
 header {
   display: flex;
   justify-content: space-between;
@@ -94,7 +99,7 @@ header a:hover {
 
 .button-container {
   display: flex;
-  margin-top: 5%;
+  margin-top: 2.5%;
 }
 
 #spriteBtn {
@@ -118,10 +123,16 @@ header a:hover {
   color: white;
   background-color: rgba(75, 74, 74, 0.674);
   border: none;
+  border-radius: 5px;
   padding: 5px 10px;
   justify-content: center;
 }
 
+
+#playBtn:hover {
+  font-style: italic;
+  background-color: rgba(53, 147, 255, 0.974);
+}
 
 
 .sprite-container img:hover {
@@ -223,7 +234,13 @@ input[type=radio]:checked {
   .sprite-container input {
     display: none;
   }
-  
+
+  /* .center-wrapper {
+    display: flexbox;
+    flex-direction: column;
+
+  }
+   */
   .center-wrapper h1{
     justify-content: center;
     text-align: center;
@@ -283,9 +300,18 @@ input[type=radio]:checked {
     width: 175px;
   }
   
-  #slapBtn {
-    margin: auto;
-    justify-self: center;
+  button.replayBtn {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 0 auto;
+    background-color: rgb(122, 188, 7);
+    transition: .15s;
+  }
+  .replayBtn:hover {
+    font-style: italic;
+    background-color: rgb(157, 213, 106);
   }
   
   /* leaderboard syles */
