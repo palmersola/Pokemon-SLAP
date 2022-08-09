@@ -1,8 +1,21 @@
+<<<<<<< HEAD
 let slapping = false
+=======
+let slappin = false;
+let round = 1;
+>>>>>>> main
 const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
 const basePlyDef = plyDef;
 const basePlySpd = plySpd;
+<<<<<<< HEAD
+=======
+const basePlyLevel = plyLevel;
+const baseOppHp = oppHp;
+const baseOppAtk = oppAtk;
+const baseOppDef = oppDef;
+const baseOppSpd = oppSpd;
+>>>>>>> main
 document.addEventListener("keyup", event => {
   if (event.code === "Space") {
     console.log("pokemon slapped");
@@ -13,6 +26,7 @@ document.addEventListener("keyup", event => {
 let newHp;
 
 async function turn() {
+<<<<<<< HEAD
   if (slapping) return;
   slapping = true
   if (plySpd > oppSpd) {
@@ -29,6 +43,23 @@ async function turn() {
       slapping = false;
       await koCheck();
     }, 500);
+=======
+  if (slappin) return;
+  slappin = true;
+  if (plySpd > oppSpd) {
+    oppHp = await playerSlap();
+    console.log(oppHp);
+    await setTimeout(async () => {
+      plyHp = await opponentSlap();
+      slappin = false;
+    }, 1000);
+  } else {
+    plyHp = await opponentSlap();
+    await setTimeout(async () => {
+      oppHp = await playerSlap();
+      slappin = false;
+    }, 1000);
+>>>>>>> main
   }
   
 }
@@ -37,6 +68,7 @@ async function playerSlap() {
   let dmg = Math.floor(
     (2 * plyLevel / 5 + 2) * 100 * (plyAtk / oppDef) / 50 + 2
   );
+<<<<<<< HEAD
   let newHp = oppHp - dmg;
 console.log(dmg);
   document.getElementById("oppHp").innerText = newHp;
@@ -45,11 +77,23 @@ console.log(dmg);
   setTimeout(() => {
     document.getElementById("oppSprt").classList.remove("animation");
   }, 400);
+=======
+  let newHp = Math.max(0, oppHp - dmg);
+  document.getElementById("oppHp").innerText = newHp;
+  if (newHp === 0) {
+    return pokeKO();
+  }
+
+  document.getElementById("oppSprt").classList.add("animation");
+  setTimeout(() => {
+    document.getElementById("oppSprt").classList.remove("animation");
+  }, 300);
+>>>>>>> main
   return newHp;
 }
 
-
 async function opponentSlap() {
+<<<<<<< HEAD
     let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
     let newHp = plyHp - dmg;
     document.getElementById("plyHp").innerText = newHp;
@@ -75,15 +119,38 @@ function pokeKO(){
     console.log("you KO'D pokemon");
     round ++
     levelUp(round)
+=======
+  let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
+  let newHp = Math.max(0, plyHp - dmg);
+  document.getElementById("plyHp").innerText = newHp;
+  if (newHp === 0) {
+    return plyKO();
+  }
+
+  document.getElementById("plySprt").classList.add("animation");
+  setTimeout(() => {
+    document.getElementById("plySprt").classList.remove("animation");
+  }, 300);
+
+  return newHp;
 }
-function plyKO(){
-    console.log("you were KO'D by pokemon");
-    loser();
+
+function pokeKO() {
+  console.log("you KO'D pokemon");
+  round++;
+  console.log(round);
+  levelUp(round);
+>>>>>>> main
+}
+function plyKO() {
+  console.log("you were KO'D by pokemon");
+  loser();
 }
 
 async function levelUp(round) {
   console.log("level up called");
   // will increase stats and update them in db to current stats of the lvl
+<<<<<<< HEAD
   let plyLevel = round
   plyHp = Math.floor((0.01 *(2 * basePlyHp * plyLevel) + plyLevel + 10) + basePlyHp)
   plyAtk = Math.floor((0.01 *(2 * basePlyAtk * plyLevel) + 5) + basePlyAtk)
@@ -102,13 +169,27 @@ async function levelUp(round) {
   document.getElementById("oppSprt").src= nextPoke.data.sprite;
   document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
   document.getElementById("oppHp").innerText = oppHP;
+=======
+  let plyLevel = round;
+  let updatedPlyHp = Math.floor(
+    0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
+  );
+  let updatedPlyAtk = Math.floor(
+    0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk
+  );
+  let updatedPlyDef = Math.floor(
+    0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef
+  );
+  let updatedPlySpd = Math.floor(
+    0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd
+  );
+  document.getElementById("plyHp").innerText = updatedPlyHp;
+>>>>>>> main
 }
 function loser() {
   // saves score and adds it to leaderboard and resets the game to start
-  let updatedPlyHp = plyHp
-  let updatedPlyAtk = plyAtk
-  let updatedPlyLevel = plyLevel 
-  let updatedPlyDef = plyDef
+  let updatedPlyHp = plyHp;
+  let updatedPlyAtk = plyAtk;
+  let updatedPlyLevel = plyLevel;
+  let updatedPlyDef = plyDef;
 }
-
-

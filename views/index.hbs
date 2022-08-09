@@ -20,8 +20,8 @@
 
 <section class="settings">
     <h3>Settings</h3>
-    <p>Choose your sprite</p>
-    <form action="/characters/sprite" method="post" class="sprite-container">
+    <p>click on a sprite, then click the green button</p>
+    <form action="/characters/sprite" method="post" class="sprite-container" id="sprite-form">
         <label for="ash">
             <img src="ash.png" alt="ash">
             <input id="ash" type="radio" name="sprite" value="ash">
@@ -70,8 +70,8 @@
             <img src="lyra.png" alt="lyra">
             <input id="lyra" type="radio" name="sprite" value="lyra">
         </label>
-        <button>choose</button>
     </form>
+        <button id="spriteBtn" form="sprite-form">select sprite</button>
 </section>
 
 </section>
