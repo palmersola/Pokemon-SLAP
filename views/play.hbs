@@ -4,51 +4,37 @@
     <div class="game-container">
         <div class="player">
             <div class="player-sprite">
-                <img src="{{player.dataValues.sprite}}" alt="player's sprite">
+                <img src="{{player.dataValues.sprite}}" id="plySprt" alt="player's sprite">
             </div>
             <div class="player-stats">
-                <span class="hp-stat">{{playerName.dataValues.user_name}} HP: {{player.dataValues.hp_stat}}</span>
+                <span class="hp-stat" >{{playerName.dataValues.user_name}} HP: <span id="plyHp">{{player.dataValues.hp_stat}}</span></span>
             </div>
         </div>
         <div class="poke">
             <div class="poke-sprite">
-                <img src="{{opponent.dataValues.sprite}}"alt="pokemon sprite">
+                <img src="{{opponent.dataValues.sprite}}" id="oppSprt" alt="pokemon sprite">
             </div>
             <div class="poke-stats">
-                <span class="hp-stat"> {{opponent.dataValues.pokemon_name}} HP: {{opponent.dataValues.hp_stat}}</span>
+                <span class="hp-stat"> {{opponent.dataValues.pokemon_name}} HP: <span id="oppHp">{{opponent.dataValues.hp_stat}}</span></span>
             </div>
         </div>
     </div>
 
 </div>
 <script>
-    document.addEventListener('keyup', event => {
-  if (event.code === 'Space'){
-    console.log("pokemon slapped");
-    slapFunc()
-  }
-})
-
-function dmgToPokemon(){
-let dmg = attack_stat;
-let hp = hp_stat
-}
-
-
-
-
-
-
-function winner() {
-
-}
-function levelUp() {
-  // will increase stats and update them in db to current stats of the lvl
-}
-function loser() {
-  // saves score and adds it to leaderboard and resets the game to start
-}
-
+    let plyHp = {{player.dataValues.hp_stat}};
+    let plyAtk = {{player.dataValues.attack_stat}};
+    let plyDef = {{player.dataValues.defense_stat}};
+    let plySpd = {{player.dataValues.speed_stat}}
+    let plyLevel = {{player.dataValues.level}};
+    let oppHp = {{opponent.dataValues.hp_stat}};
+    let oppAtk = {{opponent.dataValues.attack_stat}};
+    let oppDef = {{opponent.dataValues.defense_stat}};
+    let oppSpd = {{opponent.dataValues.speed_stat}}
 
 
 </script>
+<script src="/js/front.js"></script>
+   
+
+
