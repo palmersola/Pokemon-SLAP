@@ -5,7 +5,7 @@ const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
 
 const { isLoggedIn } = require("./helpers");
-
+let userId = "";
 // let hp = "";
 // let attack = "";
 // let defense = "";
@@ -13,30 +13,34 @@ const { isLoggedIn } = require("./helpers");
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
   const { user_name, password, water, fire, grass } = req.body;
-  console.log(water);
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
   }
-  if (!water || !fire || !grass) {
+  if (!water && !fire && !grass) {
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
   if (water) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
+    console.log("selecting water stats");
+
+    hp = 44;
+    attack = 48;
+    defense = 65;
+    speed = 43;
   } else if (fire) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
+    console.log("selecting fire stats");
+    hp = 39;
+    attack = 52;
+    defense = 43;
+    speed = 65;
   } else if (grass) {
-    hp = "";
-    attack = "";
-    defense = "";
-    speed = "";
+    console.log("selecting fire stats");
+
+    hp = 45;
+    attack = 49;
+    defense = 49;
+    speed = 45;
   }
 
   User.findOne({
@@ -48,19 +52,23 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
       req.session.errors = ["A user already exists with that username."];
       return res.redirect("/register");
     }
-    User.create(req.body)
+    User.create({
+      user_name: req.body.user_name,
+      password: req.body.password
+    })
       .then(new_user => {
+        userId = new_user.id;
         Character.create({
           hp_stat: hp,
           attack_stat: attack,
           defense_stat: defense,
           speed_stat: speed,
-          userId: new_user.id
+          userId: userId
         });
       })
       .then(new_user => {
         req.session.save(() => {
-          req.session.user_id = new_user.id;
+          req.session.user_id = userId;
           res.redirect("/");
         });
       })
