@@ -10,6 +10,7 @@ view_router.get("/", (req, res) => {
     return User.findByPk(req.session.user_id, {
       include: Character
     }).then(user => {
+      console.log(user);
       const charStats = user.dataValues.character.dataValues;
       console.log(charStats);
       res.render("index", { charStats: { ...charStats }, user: { ...user } });
@@ -36,8 +37,8 @@ view_router.get("/leaderboard", (req, res) => {
   res.render("leaderboard");
 });
 // this page will have the actual game
-view_router.get("/play", (req, res) => {
-  res.render("play");
-});
+// view_router.get("/play", (req, res) => {
+//   res.render("play");
+// });
 
 module.exports = view_router;

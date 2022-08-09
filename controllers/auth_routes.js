@@ -13,9 +13,6 @@ let userId = "";
 
 auth_router.post("/register", isLoggedIn, (req, res) => {
   const { user_name, password, water, fire, grass } = req.body;
-  console.log(fire);
-  console.log(water);
-  console.log(grass);
   if (!user_name || !password) {
     req.session.errors = ["Please check your credentials and try again."];
     return res.redirect("/register");
