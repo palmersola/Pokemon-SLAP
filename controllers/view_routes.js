@@ -10,6 +10,7 @@ view_router.get("/", (req, res) => {
     return User.findByPk(req.session.user_id, {
       include: Character
     }).then(user => {
+      console.log(user);
       const charStats = user.dataValues.character.dataValues;
       console.log(charStats);
       res.render("index", { charStats: { ...charStats }, user: { ...user } });

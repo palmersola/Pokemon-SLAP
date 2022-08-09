@@ -5,7 +5,7 @@ const axios = require("axios");
 const bcrypt = require("bcrypt");
 const seedPokes = [1, 4, 7, 10, 13, 16, 19];
 const connection = require("./connection");
-connection.sync({ force: true });
+// connection.sync({ force: true });
   async function pokePuller() {
     for (let i = 0; i < seedPokes.length; i++) {
       let retPokeCall = await pokeApiCaller(i);
