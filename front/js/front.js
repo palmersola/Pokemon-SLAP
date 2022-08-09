@@ -1,6 +1,14 @@
-
-
-
+let slappin = false;
+let round = 1;
+const basePlyHp = plyHp;
+const basePlyAtk = plyAtk;
+const basePlyDef = plyDef;
+const basePlySpd = plySpd;
+const basePlyLevel = plyLevel;
+const baseOppHp = oppHp;
+const baseOppAtk = oppAtk;
+const baseOppDef = oppDef;
+const baseOppSpd = oppSpd;
 document.addEventListener("keyup", event => {
   if (event.code === "Space") {
     console.log("pokemon slapped");
@@ -9,14 +17,21 @@ document.addEventListener("keyup", event => {
 });
 
 async function turn() {
+  if (slappin) return;
+  slappin = true;
   if (plySpd > oppSpd) {
-    oppHp = playerSlap();
-    setTimeout(() => {
-      plyHp = opponentSlap();
-    }, 1500);
+    oppHp = await playerSlap();
+    console.log(oppHp);
+    await setTimeout(async () => {
+      plyHp = await opponentSlap();
+      slappin = false;
+    }, 1000);
   } else {
     plyHp = await opponentSlap();
-    oppHp = await playerSlap();
+    await setTimeout(async () => {
+      oppHp = await playerSlap();
+      slappin = false;
+    }, 1000);
   }
 }
 
@@ -24,66 +39,67 @@ async function playerSlap() {
   let dmg = Math.floor(
     (2 * plyLevel / 5 + 2) * 100 * (plyAtk / oppDef) / 50 + 2
   );
-  console.log("player damge" + dmg);
-  let newHp = oppHp - dmg;
-  console.log("opponent health" + newHp);
+  let newHp = Math.max(0, oppHp - dmg);
   document.getElementById("oppHp").innerText = newHp;
-  if(oppHp <= 0){
-    pokeKO();
-    return;
-    }  
+  if (newHp === 0) {
+    return pokeKO();
+  }
+
+  document.getElementById("oppSprt").classList.add("animation");
   setTimeout(() => {
-    document.getElementById("oppSprt").setAttribute("class", "animation");
-  }, 400);
-  document.getElementById("oppSprt").removeAttribute("class", "animation");
+    document.getElementById("oppSprt").classList.remove("animation");
+  }, 300);
   return newHp;
 }
 
-
 async function opponentSlap() {
-    let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
-    console.log(dmg);
-    let newHp = plyHp - dmg;
-    console.log(newHp);
-    document.getElementById("plyHp").innerText = newHp;
-    if(plyHp <= 0){
-        plyKO();
-        return;
-    }
-    setTimeout(() => {
-      document.getElementById("plySprt").setAttribute("class", "animation");
-    }, 400);
-    document.getElementById("plySprt").removeAttribute("class", "animation");
+  let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
+  let newHp = Math.max(0, plyHp - dmg);
+  document.getElementById("plyHp").innerText = newHp;
+  if (newHp === 0) {
+    return plyKO();
+  }
 
-    return newHp;  
+  document.getElementById("plySprt").classList.add("animation");
+  setTimeout(() => {
+    document.getElementById("plySprt").classList.remove("animation");
+  }, 300);
+
+  return newHp;
 }
 
-let round = 1
-function pokeKO(){
-    console.log("you KO'D pokemon");
-    round ++
-    levelUp(round)
+function pokeKO() {
+  console.log("you KO'D pokemon");
+  round++;
+  console.log(round);
+  levelUp(round);
 }
-function plyKO(){
-    console.log("you were KO'D by pokemon");
-    loser();
+function plyKO() {
+  console.log("you were KO'D by pokemon");
+  loser();
 }
 
 function levelUp(round) {
   // will increase stats and update them in db to current stats of the lvl
-  let plyLevel = round
-  let updatedPlyHp = Math.floor((0.01 *(2 * plyHp * plyLevel) + plyLevel + 10))
-  let updatedPlyAtk = Math.floor((0.01 *(2 * plyAtk * plyLevel) + 5))
-  let updatedPlyLevel = plyLevel + 1
-  let updatedPlyDef = Math.floor((0.01 *(2 * plyDef * plyLevel) + 5))
+  let plyLevel = round;
+  let updatedPlyHp = Math.floor(
+    0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
+  );
+  let updatedPlyAtk = Math.floor(
+    0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk
+  );
+  let updatedPlyDef = Math.floor(
+    0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef
+  );
+  let updatedPlySpd = Math.floor(
+    0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd
+  );
   document.getElementById("plyHp").innerText = updatedPlyHp;
 }
 function loser() {
   // saves score and adds it to leaderboard and resets the game to start
-  let updatedPlyHp = plyHp
-  let updatedPlyAtk = plyAtk
-  let updatedPlyLevel = plyLevel 
-  let updatedPlyDef = plyDef
+  let updatedPlyHp = plyHp;
+  let updatedPlyAtk = plyAtk;
+  let updatedPlyLevel = plyLevel;
+  let updatedPlyDef = plyDef;
 }
-
-
