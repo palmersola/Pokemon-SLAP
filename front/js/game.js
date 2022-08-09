@@ -1,19 +1,25 @@
-const slapBtn = document.getDocumentById('#slap');
-const playBtn = document.getElementById('#play')
+// const Pokemon = require("../../models/Pokemon");
+
+// fetch('http://localhost:3333/play',{
+//     method:'GET'
+// }).then(response => response.json()).then((value)=>{
+//     console.log(value)
+// }).catch(error=>{
+//     console.log(error);
+// })
 
 
+// document.addEventListener('keyup', event => {
+//   if (event.code === 'Space'){
+//     slapFunc
+//     console.log("pokemon slapped");
+//   }
+// })
 
+// function slapFunc(){
 
-playBtn.addEventListener("click", (event) => {
-  window.location.href = "http://localhost:3333/play";
-});
+// }
 
-slapBtn.addEventListener("keypress", spaceClicked);
-
-function spaceClicked(event){
-    if (event.keyCode == 32);
-console.log(`you slapped ${Pokemon} for ${dmgAmount}`);
-}
 
 
 
