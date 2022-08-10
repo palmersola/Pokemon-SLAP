@@ -1,6 +1,5 @@
 const pokemon_routes = require("express").Router();
 const { User, Pokemon, Character } = require("../models");
-const { isLoggedIn } = require("./helpers");
 console.log("loaded pokemon_routes");
 
 pokemon_routes.get("/play", async (req, res) => {
