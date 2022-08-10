@@ -1,11 +1,12 @@
 <div class="center-wrapper">
     <h1 class="round-count">Level: <span id="level">{{player.dataValues.level}}</span></h1>
-    <div class="game-container">
+    <div class="game-container " >
         <div class="game-over">
             <h1 id="gameOver">GAME OVER</h1>
         </div>
 
         <div id="player">
+            <h2 id="pokeMiss">*DODGE*</h2>
             <div class="player-sprite">
                 <img src="{{player.dataValues.sprite}}" id="plySprt" alt="player's sprite">
             </div>
@@ -14,6 +15,7 @@
             </div>
         </div>
         <div id="poke">
+            <h2 id="plyrMiss" >*DODGE*</h2>
             <div class="poke-sprite">
                 <img src="{{opponent.dataValues.sprite}}" id="oppSprt" alt="pokemon sprite">
             </div>
