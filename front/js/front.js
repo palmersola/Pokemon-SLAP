@@ -26,6 +26,7 @@ async function turn() {
     // player slap turn
     oppHp = await playerSlap();
     // after slap check to see if pokemon or player is KO'd
+<<<<<<< HEAD
     koCheck();
     setTimeout(async () => {
       //check to ensure opponent slap does not occur if opponent is KO'd
@@ -36,16 +37,55 @@ async function turn() {
       // after slap check to see if pokemon or player is KO'd
       koCheck();
     }, 1000);
-  } else {
-    plyHp = await opponentSlap();
-    koCheck();
+=======
+
     setTimeout(async () => {
+      //check to ensure opponent slap does not occur if opponent is KO'd
+      if(koCheck()) {
+        slapping = false;
+        pokeKO();
+      }else if(koCheck() === false) {
+        console.log("in oppPoke KO else if");
+        slapping = false
+        plyKO();
+      }else {
+        console.log("in oppSlap if");
+        plyHp = await opponentSlap();
+        slapping = false;
+        if(koCheck() === false) plyKO();
+      }
+    // after slap check to see if pokemon or player is KO'd
+
+    }, 100);
+>>>>>>> dd1d36a751da8065d629f75186e582520e62f111
+  } else {
+    // opponent slap turn
+    plyHp = await opponentSlap();
+    // after slap check to see if pokemon or player is KO'd
+
+    setTimeout(async () => {
+<<<<<<< HEAD
       if (koCheck() || koCheck() === 0) {
         oppHp = await playerSlap();
         slapping = false;
       }
       koCheck();
     }, 1000);
+=======
+      if(koCheck()) {
+        slapping = false;
+        pokeKO();
+      }else if(koCheck() === false) {
+        slapping = false;
+        plyKO();
+      }else {
+        oppHp = await playerSlap();
+        slapping = false;
+        if(koCheck()) pokeKO();
+      }
+
+    }, 100);
+>>>>>>> dd1d36a751da8065d629f75186e582520e62f111
   }
 }
 
@@ -110,12 +150,12 @@ async function opponentSlap() {
 function koCheck() {
   if (oppHp < 1) {
     bossin.play();
-    pokeKO();
+    // pokeKO();
     return true;
   } else if (plyHp < 1) {
-    plyKO();
+    // plyKO();
     return false;
-  } else return 0;
+  }
 }
 
 let round = 1;
