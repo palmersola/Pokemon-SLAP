@@ -54,7 +54,7 @@ This game was developed by the following users. Please check out some of their o
 
 ## Deployed link to game
 
-- Click [HERE](https://github.com/palmersola/Pokemon-SLAP) to play our game!
+- Click [HERE](https://poke-slap.herokuapp.com/) to play our game!
 
 ## Link to Repository storing application
 
