@@ -24,25 +24,48 @@ let newHp;
 async function turn() {
   if (slapping) return;
   slapping = true;
+  //check player and opponent speed to see who gets first slap
   if (plySpd >= oppSpd) {
+    // player slap turn
     oppHp = await playerSlap();
-    koCheck();
+    // after slap check to see if pokemon or player is KO'd
+
     setTimeout(async () => {
-      if(!koCheck() || koCheck() === 0) {
-        plyHp = await opponentSlap();
+      //check to ensure opponent slap does not occur if opponent is KO'd
+      if(koCheck()) {
+        slapping = false;
+        pokeKO();
+      }else if(koCheck() === false) {
+        console.log("in oppPoke KO else if");
         slapping = false
-    };
-    koCheck();
+        plyKO();
+      }else {
+        console.log("in oppSlap if");
+        plyHp = await opponentSlap();
+        slapping = false;
+        if(koCheck() === false) plyKO();
+      }
+    // after slap check to see if pokemon or player is KO'd
+
     }, 100);
   } else {
+    // opponent slap turn
     plyHp = await opponentSlap();
-    koCheck();
+    // after slap check to see if pokemon or player is KO'd
+
     setTimeout(async () => {
-      if(koCheck() || koCheck() === 0) {
+      if(koCheck()) {
+        slapping = false;
+        pokeKO();
+      }else if(koCheck() === false) {
+        slapping = false;
+        plyKO();
+      }else {
         oppHp = await playerSlap();
         slapping = false;
-    };
-    koCheck();
+        if(koCheck()) pokeKO();
+      }
+
     }, 100);
   }
 }
@@ -78,12 +101,12 @@ async function opponentSlap() {
 function koCheck() {
   if (oppHp < 1) {
     bossin.play();
-    pokeKO();
+    // pokeKO();
     return true;
   } else if (plyHp < 1) {
-    plyKO();
+    // plyKO();
     return false;
-  } else return 0;
+  }
 }
 
 let round = 1;
