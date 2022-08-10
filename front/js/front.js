@@ -24,21 +24,25 @@ let newHp;
 async function turn() {
   if (slapping) return;
   slapping = true;
-  if (plySpd > oppSpd) {
+  if (plySpd >= oppSpd) {
     oppHp = await playerSlap();
+    koCheck();
     setTimeout(async () => {
-      if(!koCheck()) {
+      if(!koCheck() || koCheck() === 0) {
         plyHp = await opponentSlap();
         slapping = false
     };
+    koCheck();
     }, 100);
   } else {
     plyHp = await opponentSlap();
+    koCheck();
     setTimeout(async () => {
-      if(koCheck()) {
+      if(koCheck() || koCheck() === 0) {
         oppHp = await playerSlap();
         slapping = false;
     };
+    koCheck();
     }, 100);
   }
 }
@@ -71,13 +75,15 @@ async function opponentSlap() {
   return newHp;
 }
 
-async function koCheck() {
+function koCheck() {
   if (oppHp < 1) {
     bossin.play();
-    return pokeKO();
+    pokeKO();
+    return true;
   } else if (plyHp < 1) {
-    return plyKO();
-  }
+    plyKO();
+    return false;
+  } else return 0;
 }
 
 let round = 1;
@@ -85,12 +91,10 @@ function pokeKO() {
   console.log("you KO'D pokemon");
   round++;
   levelUp(round);
-  return true;
 }
 function plyKO() {
   console.log("you were KO'D by pokemon");
   loser();
-  return false;
 }
 
 async function levelUp(round) {
@@ -142,6 +146,12 @@ async function loser() {
   let gameOver = document.getElementById('gameOver');
   gameOver.style.visibility = "Visible";
   let replay = document.getElementById('replayBtn');
+  let plySprite = document.getElementById('player');
+  let pokeSprite = document.getElementById('poke');
+
+  plySprite.style.visibility = 'hidden'
+  pokeSprite.style.visibility = 'hidden'
+
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function () {
 
