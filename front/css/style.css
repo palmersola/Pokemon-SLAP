@@ -273,6 +273,7 @@ header a:hover {
   position: relative;
   border-radius: 10px;
   background-image: url(https://p4.wallpaperbetter.com/wallpaper/503/189/157/video-games-pokemon-pixels-pixel-art-wallpaper-preview.jpg);
+  background-color: black;
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -290,6 +291,23 @@ header a:hover {
   background-color: rgb(118, 116, 116);
   color: rgb(255, 68, 0);
   border-radius: 6px;
+}
+
+#pokeMiss {
+  font-size: 60px;
+  color: red;
+  position: absolute;
+  bottom: 110px;
+  left: 80px;
+  visibility: hidden;
+}
+#plyrMiss {
+  font-size: 60px;
+  color: red;
+  position: absolute;
+  bottom: 110px;
+  right: 80px;
+  visibility: hidden;
 }
 
 #player,
@@ -369,6 +387,13 @@ header a:hover {
 /* KEYFRAMES */
 
 .animation {
+  animation: shake 0.2s;
+  animation-iteration-count: once;
+  filter: blur(2px);
+  filter: grayscale(40%);
+}
+.animationVisible {
+  visibility: visible;
   animation: shake 0.2s;
   animation-iteration-count: once;
   filter: blur(2px);

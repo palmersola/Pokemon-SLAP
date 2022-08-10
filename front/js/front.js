@@ -21,16 +21,21 @@ let newHp;
 async function turn() {
   if (slapping) return;
   slapping = true;
+  //check player and opponent speed to see who gets first slap
   if (plySpd >= oppSpd) {
+    // player slap turn
     oppHp = await playerSlap();
+    // after slap check to see if pokemon or player is KO'd
     koCheck();
     setTimeout(async () => {
+      //check to ensure opponent slap does not occur if opponent is KO'd
       if (!koCheck() || koCheck() === 0) {
         plyHp = await opponentSlap();
         slapping = false;
       }
+      // after slap check to see if pokemon or player is KO'd
       koCheck();
-    }, 100);
+    }, 1000);
   } else {
     plyHp = await opponentSlap();
     koCheck();
@@ -40,35 +45,66 @@ async function turn() {
         slapping = false;
       }
       koCheck();
-    }, 100);
+    }, 1000);
   }
 }
+
 async function playerSlap() {
   let dmg = Math.floor(
     (2 * plyLevel / 5 + 2) * 100 * (plyAtk / oppDef) / 50 + 2
   );
-  let newHp = oppHp - dmg;
-  console.log(dmg);
-  document.getElementById("oppHp").innerText = newHp;
-  slap.play();
-  document.getElementById("oppSprt").setAttribute("class", "animation");
-  setTimeout(() => {
-    document.getElementById("oppSprt").classList.remove("animation");
-  }, 400);
-  return newHp;
+
+  let miss = Math.floor(Math.random() * 11);
+  if (miss > 2) {
+    let newHp = oppHp - dmg;
+    console.log(dmg);
+    document.getElementById("oppHp").innerText = newHp;
+    slap.play();
+    document.getElementById("oppSprt").setAttribute("class", "animation");
+    setTimeout(() => {
+      document.getElementById("oppSprt").classList.remove("animation");
+    }, 400);
+    return newHp;
+  } else {
+    let newHp = oppHp;
+    document.getElementById("oppHp").innerText = newHp;
+    let plyrMiss = document.getElementById("plyrMiss");
+    plyrMiss.style.visibility = "Visible";
+    plyrMiss.setAttribute("class", "animation");
+    setTimeout(() => {
+      plyrMiss.style.visibility = "hidden";
+      document.getElementById("plyrMiss").classList.remove("animation");
+    }, 400);
+
+    return newHp;
+  }
 }
 
 async function opponentSlap() {
   let dmg = Math.floor((2 * 1 / 5 + 2) * 100 * (oppAtk / plyDef) / 50 + 2);
-  let newHp = plyHp - dmg;
-  document.getElementById("plyHp").innerText = newHp;
-  slap.play();
-  document.getElementById("plySprt").setAttribute("class", "animation");
-  setTimeout(() => {
-    document.getElementById("plySprt").classList.remove("animation");
-  }, 400);
+  let miss = Math.floor(Math.random() * 11);
+  if (miss > 2) {
+    let newHp = plyHp - dmg;
+    document.getElementById("plyHp").innerText = newHp;
+    slap.play();
+    document.getElementById("plySprt").setAttribute("class", "animation");
+    setTimeout(() => {
+      document.getElementById("plySprt").classList.remove("animation");
+    }, 400);
+    return newHp;
+  } else {
+    let newHp = plyHp;
+    document.getElementById("plyHp").innerText = newHp;
+    let pokeMiss = document.getElementById("pokeMiss");
+    pokeMiss.style.visibility = "Visible";
+    pokeMiss.setAttribute("class", "animation");
+    setTimeout(() => {
+      pokeMiss.style.visibility = "hidden";
+      document.getElementById("pokeMiss").classList.remove("animation");
+    }, 400);
 
-  return newHp;
+    return newHp;
+  }
 }
 
 function koCheck() {
@@ -141,7 +177,6 @@ async function loser() {
   slapping = true;
   let gameOver = document.getElementById("gameOver");
   gameOver.style.visibility = "Visible";
-
   let replay = document.getElementById("replayBtn");
   let plySprite = document.getElementById("player");
   let pokeSprite = document.getElementById("poke");
