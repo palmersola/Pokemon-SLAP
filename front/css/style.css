@@ -334,7 +334,7 @@ header a:hover {
   transition: 0.15s;
   visibility: hidden;
 }
-.replayBtn:hover {
+#replayBtn:hover {
   font-style: italic;
   background-color: rgb(157, 213, 106);
 }
