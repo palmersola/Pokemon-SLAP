@@ -18,13 +18,12 @@ document.addEventListener("keyup", event => {
 });
 
 //screen touch listener
-document.addEventListener('touchstart', event => {
+document.addEventListener("touchstart", event => {
   event.preventDefault();
   turn();
-})
+});
 //stop scrolling on spacebar press
-window.addEventListener('keydown', (e) => {
-
+window.addEventListener("keydown", e => {
   if (e.keyCode === 32 && e.target === document.body) {
     e.preventDefault();
   }
@@ -215,7 +214,7 @@ async function loser() {
 
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function() {
-    // window.location.replace("https://poke-slap.herokuapp.com/play");
-    window.location.replace("http://localhost:3333/");
+    window.location.replace("https://poke-slap.herokuapp.com/play");
+    // window.location.replace("http://localhost:3333/");
   });
 }
