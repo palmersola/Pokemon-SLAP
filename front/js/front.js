@@ -8,6 +8,7 @@ let slap = new Audio("/assets/slap.mp3");
 slap.volume = 0.25;
 let bossin = new Audio("/assets/thatsbossin.mp3");
 bossin.volume = 1;
+//spacebar click listener
 document.addEventListener("keyup", event => {
   if (event.code === "Space") {
     console.log("pokemon slapped");
@@ -15,6 +16,12 @@ document.addEventListener("keyup", event => {
     turn();
   }
 });
+//screen touch listener
+document.addEventListener('touchstart', event => {
+  event.preventDefault();
+  turn();
+})
+//stop scrolling on spacebar press
 window.addEventListener('keydown', (e) => {
   if (e.keyCode === 32 && e.target === document.body) {
     e.preventDefault();
@@ -206,7 +213,7 @@ async function loser() {
 
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function() {
-    window.location.replace("https://poke-slap.herokuapp.com/play");
-    // window.location.replace("http://localhost:3333/");
+    // window.location.replace("https://poke-slap.herokuapp.com/play");
+    window.location.replace("http://localhost:3333/");
   });
 }
