@@ -3,7 +3,7 @@ const Pokemon = require("../models/Pokemon");
 const User = require("../models/User");
 const axios = require("axios");
 const bcrypt = require("bcrypt");
-const seedPokes = [10, 13, 16, 19, 1, 4, 7, 26, 38, 55, 88, 65, 98];
+const seedPokes = [10, 13, 16, 19, 1, 4, 7, 65, 98, 38, 55, 88, 26];
 const connection = require("./connection");
 // connection.sync({ force: true });
 async function pokePuller() {
