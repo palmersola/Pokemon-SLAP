@@ -18,6 +18,10 @@ body {
   display: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
 /* CUSTOM STYLING */
 header {
   background-color: rgba(144, 185, 72, 0.72);
@@ -288,17 +292,19 @@ header a:hover {
   border-radius: 6px;
 }
 
-.player,
-.poke {
+#player,
+#poke {
   position: absolute;
   bottom: -198px;
   margin: 25% 60px;
 }
-.player {
+#player {
   left: 40px;
+  visibility: visible;
 }
-.poke {
+#poke {
   right: 40px;
+  visibility: visible;
 }
 
 .button-container a {
