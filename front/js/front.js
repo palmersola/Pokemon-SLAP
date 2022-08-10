@@ -207,5 +207,6 @@ async function loser() {
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function() {
     window.location.replace("https://poke-slap.herokuapp.com/play");
+    // window.location.replace("http://localhost:3333/");
   });
 }
