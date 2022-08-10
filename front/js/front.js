@@ -42,7 +42,7 @@ async function turn() {
         if (koCheck() === false) plyKO();
       }
       // after slap check to see if pokemon or player is KO'd
-    }, 100);
+    }, 1000);
   } else {
     // opponent slap turn
     plyHp = await opponentSlap();
@@ -60,7 +60,7 @@ async function turn() {
         slapping = false;
         if (koCheck()) pokeKO();
       }
-    }, 100);
+    }, 1000);
   }
 }
 
