@@ -16,6 +16,7 @@ document.addEventListener("keyup", event => {
     turn();
   }
 });
+
 //screen touch listener
 document.addEventListener('touchstart', event => {
   event.preventDefault();
@@ -23,6 +24,7 @@ document.addEventListener('touchstart', event => {
 })
 //stop scrolling on spacebar press
 window.addEventListener('keydown', (e) => {
+
   if (e.keyCode === 32 && e.target === document.body) {
     e.preventDefault();
   }
@@ -168,7 +170,7 @@ async function levelUp(round) {
   plySpd = Math.floor(0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd);
   document.getElementById("plyHp").innerText = plyHp;
   let nextPoke = await axios.get(`/play/${plyLevel}`);
-  console.log(nextPoke);
+  // console.log(nextPoke);
   //update next pokemon stats based off level
   oppHp = Math.floor(
     0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +

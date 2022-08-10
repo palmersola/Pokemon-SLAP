@@ -43,7 +43,7 @@ character_router.post("/sprite/", (req, res) => {
   // update a Character's name by its `id` value
   // console.log("test");
   // const { sprite } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   Character.update(
     {
       sprite: req.body.sprite + ".png"
