@@ -66,6 +66,6 @@ app.use("/characters", character_routes);
 // app.use("/play", pokemon_routes);
 
 // sync db tables
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 });
