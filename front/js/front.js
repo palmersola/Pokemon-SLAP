@@ -1,5 +1,5 @@
 let round;
-getLevel()
+getLevel();
 let slapping = false;
 let critical = 1;
 let newHp;
@@ -193,7 +193,6 @@ function koCheck() {
   }
 }
 
-
 function pokeKO() {
   round++;
   levelUp(round);
@@ -207,9 +206,7 @@ function levelUp(round) {
   console.log("level up called");
   // will increase stats in db to current stats of the lvl
   let plyLevel = round;
-  plyHp = Math.floor(
-    0.01 * (2 * baseHp * plyLevel) + plyLevel + 10 + baseHp
-  );
+  plyHp = Math.floor(0.01 * (2 * baseHp * plyLevel) + plyLevel + 10 + baseHp);
   plyAtk = Math.floor(0.01 * (2 * baseAtk * plyLevel) + 5 + baseAtk);
   plyDef = Math.floor(0.01 * (2 * baseDef * plyLevel) + 5 + baseDef);
   plySpd = Math.floor(0.01 * (2 * baseSpd * plyLevel) + 5 + baseSpd);
@@ -217,54 +214,51 @@ function levelUp(round) {
 
   //check to see if player hits the save points every 5 levels and
   //update stats in the database for character
-  if( round % 5 === 0){
+  if (round % 5 === 0) {
     let data = {
       plyLevel: plyLevel,
       plyHp: plyHp,
       plyAtk: plyAtk,
       plyDef: plyDef,
       plySpd: plySpd
-    }
-    axios.post(`/play/save`, data).then(
-      nextPokemon(plyLevel)
-    )
+    };
+    axios.post(`/play/save`, data).then(nextPokemon(plyLevel));
   } else nextPokemon(plyLevel);
 }
 
-
-async function nextPokemon(plyLevel){
-    let nextPoke = await axios.get(`/play/${plyLevel}`);
-    // console.log(nextPoke);
-    //update next pokemon stats based off level
-    oppHp = Math.floor(
-      0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
-        plyLevel +
-        10 +
-        nextPoke.data.hp_stat
-    );
-    oppAtk = Math.floor(
-      0.01 * (2 * nextPoke.data.attack_stat * plyLevel) +
-        5 +
-        nextPoke.data.attack_stat
-    );
-    oppDef = Math.floor(
-      0.01 * (2 * nextPoke.data.defense_stat * plyLevel) +
-        5 +
-        nextPoke.data.defense_stat
-    );
-    oppSpd = Math.floor(
-      0.01 * (2 * nextPoke.data.speed_stat * plyLevel) +
-        5 +
-        nextPoke.data.speed_stat
-    );
-    console.log("level up func oppHP" + oppHp);
-    //update image source
-    console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
-    document.getElementById("oppSprt").src = nextPoke.data.sprite;
-    document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
-    document.getElementById("oppHp").innerText = oppHp;
-    document.getElementById("level").innerText = round;
-    }
+async function nextPokemon(plyLevel) {
+  let nextPoke = await axios.get(`/play/${plyLevel}`);
+  // console.log(nextPoke);
+  //update next pokemon stats based off level
+  oppHp = Math.floor(
+    0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
+      plyLevel +
+      10 +
+      nextPoke.data.hp_stat
+  );
+  oppAtk = Math.floor(
+    0.01 * (2 * nextPoke.data.attack_stat * plyLevel) +
+      5 +
+      nextPoke.data.attack_stat
+  );
+  oppDef = Math.floor(
+    0.01 * (2 * nextPoke.data.defense_stat * plyLevel) +
+      5 +
+      nextPoke.data.defense_stat
+  );
+  oppSpd = Math.floor(
+    0.01 * (2 * nextPoke.data.speed_stat * plyLevel) +
+      5 +
+      nextPoke.data.speed_stat
+  );
+  console.log("level up func oppHP" + oppHp);
+  //update image source
+  console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
+  document.getElementById("oppSprt").src = nextPoke.data.sprite;
+  document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
+  document.getElementById("oppHp").innerText = oppHp;
+  document.getElementById("level").innerText = round;
+}
 
 async function loser() {
   console.log("Loser Called");
@@ -289,8 +283,7 @@ async function loser() {
 
 async function getLevel() {
   console.log("getLevel func called");
-  let data = await axios.get(`/play/level/round`)
+  let data = await axios.get(`/play/level/round`);
   round = data.data.level;
   levelUp(round);
-  };
-
+}
