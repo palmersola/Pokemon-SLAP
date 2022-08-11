@@ -22,6 +22,11 @@ body {
   visibility: visible;
 }
 
+.selected-sprite {
+  background-color: rgba(251, 235, 134, 0.916);
+  border-radius: 50%;
+}
+
 /* CUSTOM STYLING */
 header {
   background-color: rgba(144, 185, 72, 0.72);
