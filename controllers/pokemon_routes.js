@@ -19,15 +19,20 @@ pokemon_routes.get("/play", async (req, res) => {
   }
 });
 
+//send back next pokemon to fight
 pokemon_routes.get("/play/:id", async (req, res) => {
   const nextPoke = await Pokemon.findByPk(req.params.id);
   res.send(nextPoke);
 });
 
-pokemon_routes.post("/play/save/:level", async (req, res) => {
-  Character.findByPk(req.session.user_id).then(data => {
+pokemon_routes.post("/play/save", async (req, res) => {
+  Character.findByPk(req.session.user_id).then(() => {
     Character.update({
-      level: req.params.level,
+      level: req.body.plyLevel,
+      hp_stat: req.body.plyHp,
+      attack_stat: req.body.plyAtk,
+      defense_stat: req.body.plyDef,
+      speed_stat: req.body.plySpd
     },
       {
         where: {
@@ -36,6 +41,14 @@ pokemon_routes.post("/play/save/:level", async (req, res) => {
       }
     )
   })
+});
+
+//send back characters level to set round correctly
+pokemon_routes.get("/play/level/round", async (req, res) => {
+  console.log(req.body);
+  const charLevel = await Character.findByPk(req.session.user_id);
+  console.log("CHARACTER OBJ", charLevel);
+  res.send(charLevel);
 })
 
 pokemon_routes.get("/play/leaderboard", async (req, res) => {

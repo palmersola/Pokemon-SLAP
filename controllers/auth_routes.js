@@ -58,6 +58,10 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
           attack_stat: attack,
           defense_stat: defense,
           speed_stat: speed,
+          base_hp: hp,
+          base_attack: attack,
+          base_defense: defense,
+          base_speed: speed,
           userId: userId
         });
       })
