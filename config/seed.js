@@ -50,7 +50,7 @@ const low50 = [
   118,
   96
 ];
-const new50 = [
+const newSeed = [
   13,
   129,
   39,
@@ -62,7 +62,6 @@ const new50 = [
   52,
   7,
   1,
-  63,
   54,
   56,
   25,
@@ -74,7 +73,57 @@ const new50 = [
   79,
   133,
   58,
-  27
+  27,
+  72,
+  83,
+  109,
+  17,
+  140,
+  138,
+  98,
+  15,
+  12,
+  137,
+  108,
+  33,
+  30,
+  111,
+  44,
+  8,
+  5,
+  2,
+  64,
+  61,
+  124,
+  122,
+  95,
+  20,
+  107,
+  106,
+  105,
+  77,
+  75,
+  70,
+  67,
+  47,
+  148,
+  93,
+  40,
+  51,
+  24,
+  53,
+  49,
+  22,
+  36,
+  119,
+  57,
+  80,
+  45,
+  42,
+  126,
+  125,
+  117,
+  114
 ];
 const mid50 = [
   72,
@@ -193,7 +242,7 @@ const seedPokes = [10, 13, 16, 19, 1, 4, 7, 65, 98, 38, 55, 88, 26];
 const connection = require("./connection");
 // connection.sync({ force: false }).then(pokePuller);
 async function pokePuller() {
-  for (let i = 0; i < new50.length; i++) {
+  for (let i = 0; i < newSeed.length; i++) {
     let retPokeCall = await pokeApiCaller(i);
     await Pokemon.create({
       pokemon_name: retPokeCall.data.species.name,
@@ -210,7 +259,7 @@ async function pokePuller() {
 }
 
 async function pokeApiCaller(id) {
-  let apiCall = await axios(`https://pokeapi.co/api/v2/pokemon/${new50[id]}`);
+  let apiCall = await axios(`https://pokeapi.co/api/v2/pokemon/${newSeed[id]}`);
   return apiCall;
 }
 
