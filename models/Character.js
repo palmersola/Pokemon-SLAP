@@ -30,6 +30,22 @@ Character.init(
       allowNull: false,
       defaultValue: "ash.png"
     },
+    base_hp:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    base_attack: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    base_defense: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    base_speed: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,

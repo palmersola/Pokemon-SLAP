@@ -1,9 +1,5 @@
-
+let round;
 let slapping = false;
-const basePlyHp = plyHp;
-const basePlyAtk = plyAtk;
-const basePlyDef = plyDef;
-const basePlySpd = plySpd;
 let critical = 1;
 let newHp;
 
@@ -196,7 +192,7 @@ function koCheck() {
   }
 }
 
-let round = 1;
+
 function pokeKO() {
   round++;
   levelUp(round);
@@ -209,24 +205,37 @@ function plyKO() {
 
 function levelUp(round) {
   console.log("level up called");
-  //check to see if player hits the save points every 5 levels
+  // will increase stats in db to current stats of the lvl
+  let plyLevel = round;
+  plyHp = Math.floor(
+    0.01 * (2 * baseHp * plyLevel) + plyLevel + 10 + baseHp
+  );
+  plyAtk = Math.floor(0.01 * (2 * baseAtk * plyLevel) + 5 + baseAtk);
+  plyDef = Math.floor(0.01 * (2 * baseDef * plyLevel) + 5 + baseDef);
+  plySpd = Math.floor(0.01 * (2 * baseSpd * plyLevel) + 5 + baseSpd);
+  document.getElementById("plyHp").innerText = plyHp;
+
+  //check to see if player hits the save points every 5 levels and
+  //update stats in the database for character
   if( round % 5 === 0){
-    axios.post(`/play/save/${round}`).then(
-      nextPokemon()
+    let data = {
+      plyLevel: plyLevel,
+      plyHp: plyHp,
+      plyAtk: plyAtk,
+      plyDef: plyDef,
+      plySpd: plySpd
+    }
+    axios.post(`/play/save`, data).then(
+      nextPokemon(plyLevel)
     )
-  } else nextPokemon();
+  } else nextPokemon(plyLevel);
+
+  
+
+  
 }
 
-async function nextPokemon(){
-    // will increase stats and update them in db to current stats of the lvl
-    let plyLevel = round;
-    plyHp = Math.floor(
-      0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
-    );
-    plyAtk = Math.floor(0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk);
-    plyDef = Math.floor(0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef);
-    plySpd = Math.floor(0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd);
-    document.getElementById("plyHp").innerText = plyHp;
+async function nextPokemon(plyLevel){
     let nextPoke = await axios.get(`/play/${plyLevel}`);
     // console.log(nextPoke);
     //update next pokemon stats based off level
@@ -258,7 +267,6 @@ async function nextPokemon(){
     document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
     document.getElementById("oppHp").innerText = oppHp;
     document.getElementById("level").innerText = round;
-
 }
 async function loser() {
   console.log("Loser Called");
@@ -277,7 +285,15 @@ async function loser() {
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function() {
 
-    window.location.replace("https://poke-slap.herokuapp.com/play");
-    // window.location.replace("http://localhost:3333/play");
+    // window.location.replace("https://poke-slap.herokuapp.com/play");
+    window.location.replace("http://localhost:3333/play");
   });
 }
+
+async function getLevel() {
+  let data = await axios.get(`/play/level/round`)
+  round = data.data.level;
+  levelUp(round);
+  };
+
+  getLevel()
