@@ -24,6 +24,20 @@ pokemon_routes.get("/play/:id", async (req, res) => {
   res.send(nextPoke);
 });
 
+pokemon_routes.post("/play/save/:level", async (req, res) => {
+  Character.findByPk(req.session.user_id).then(data => {
+    Character.update({
+      level: req.params.level,
+    },
+      {
+        where: {
+        id: req.session.user_id,
+        }
+      }
+    )
+  })
+})
+
 pokemon_routes.get("/play/leaderboard", async (req, res) => {
   res.render("leaderboard");
 });
