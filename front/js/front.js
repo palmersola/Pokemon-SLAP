@@ -1,3 +1,4 @@
+
 let slapping = false;
 const basePlyHp = plyHp;
 const basePlyAtk = plyAtk;
@@ -155,51 +156,60 @@ function pokeKO() {
 }
 function plyKO() {
   console.log("you were KO'D by pokemon");
-  loser();
+  loser(level);
 }
 
-async function levelUp(round) {
+function levelUp(round) {
   console.log("level up called");
-  // will increase stats and update them in db to current stats of the lvl
-  let plyLevel = round;
-  plyHp = Math.floor(
-    0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
-  );
-  plyAtk = Math.floor(0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk);
-  plyDef = Math.floor(0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef);
-  plySpd = Math.floor(0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd);
-  document.getElementById("plyHp").innerText = plyHp;
-  let nextPoke = await axios.get(`/play/${plyLevel}`);
-  // console.log(nextPoke);
-  //update next pokemon stats based off level
-  oppHp = Math.floor(
-    0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
-      plyLevel +
-      10 +
-      nextPoke.data.hp_stat
-  );
-  oppAtk = Math.floor(
-    0.01 * (2 * nextPoke.data.attack_stat * plyLevel) +
-      5 +
-      nextPoke.data.attack_stat
-  );
-  oppDef = Math.floor(
-    0.01 * (2 * nextPoke.data.defense_stat * plyLevel) +
-      5 +
-      nextPoke.data.defense_stat
-  );
-  oppSpd = Math.floor(
-    0.01 * (2 * nextPoke.data.speed_stat * plyLevel) +
-      5 +
-      nextPoke.data.speed_stat
-  );
-  console.log("level up func oppHP" + oppHp);
-  //update image source
-  console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
-  document.getElementById("oppSprt").src = nextPoke.data.sprite;
-  document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
-  document.getElementById("oppHp").innerText = oppHp;
-  document.getElementById("level").innerText = round;
+  //check to see if player hits the save points every 5 levels
+  if( round % 5 === 0){
+    axios.post(`/play/save/${round}`).then(
+      nextPokemon()
+    )
+  } else nextPokemon();
+}
+
+async function nextPokemon(){
+    // will increase stats and update them in db to current stats of the lvl
+    let plyLevel = round;
+    plyHp = Math.floor(
+      0.01 * (2 * basePlyHp * plyLevel) + plyLevel + 10 + basePlyHp
+    );
+    plyAtk = Math.floor(0.01 * (2 * basePlyAtk * plyLevel) + 5 + basePlyAtk);
+    plyDef = Math.floor(0.01 * (2 * basePlyDef * plyLevel) + 5 + basePlyDef);
+    plySpd = Math.floor(0.01 * (2 * basePlySpd * plyLevel) + 5 + basePlySpd);
+    document.getElementById("plyHp").innerText = plyHp;
+    let nextPoke = await axios.get(`/play/${plyLevel}`);
+    // console.log(nextPoke);
+    //update next pokemon stats based off level
+    oppHp = Math.floor(
+      0.01 * (2 * nextPoke.data.hp_stat * plyLevel) +
+        plyLevel +
+        10 +
+        nextPoke.data.hp_stat
+    );
+    oppAtk = Math.floor(
+      0.01 * (2 * nextPoke.data.attack_stat * plyLevel) +
+        5 +
+        nextPoke.data.attack_stat
+    );
+    oppDef = Math.floor(
+      0.01 * (2 * nextPoke.data.defense_stat * plyLevel) +
+        5 +
+        nextPoke.data.defense_stat
+    );
+    oppSpd = Math.floor(
+      0.01 * (2 * nextPoke.data.speed_stat * plyLevel) +
+        5 +
+        nextPoke.data.speed_stat
+    );
+    console.log("level up func oppHP" + oppHp);
+    //update image source
+    console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
+    document.getElementById("oppSprt").src = nextPoke.data.sprite;
+    document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
+    document.getElementById("oppHp").innerText = oppHp;
+    document.getElementById("level").innerText = round;
 }
 async function loser() {
   console.log("Loser Called");
@@ -210,12 +220,14 @@ async function loser() {
   let plySprite = document.getElementById("player");
   let pokeSprite = document.getElementById("poke");
 
+  //hide sprites when game is over
   plySprite.style.visibility = "hidden";
   pokeSprite.style.visibility = "hidden";
 
+  //make play again button visible and add event listener to it
   replay.style.visibility = "Visible";
   replay.addEventListener("click", function() {
-    // window.location.replace("https://poke-slap.herokuapp.com/play");
-    window.location.replace("http://localhost:3333/");
+    window.location.replace("https://poke-slap.herokuapp.com/play");
+    // window.location.replace("http://localhost:3333/play");
   });
 }
