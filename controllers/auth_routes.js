@@ -22,20 +22,20 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
     return res.redirect("/register");
   }
   if (type === "water") {
-    hp = 44;
-    attack = 48;
-    defense = 65;
-    speed = 43;
+    hp = 48;
+    attack = 53;
+    defense = 72;
+    speed = 47;
   } else if (type === "fire") {
-    hp = 39;
-    attack = 52;
-    defense = 43;
-    speed = 65;
+    hp = 44;
+    attack = 57;
+    defense = 47;
+    speed = 72;
   } else if (type === "grass") {
-    hp = 45;
-    attack = 49;
-    defense = 49;
-    speed = 45;
+    hp = 52;
+    attack = 58;
+    defense = 58;
+    speed = 52;
   }
 
   User.findOne({
