@@ -186,8 +186,6 @@ const firstGen = [
   28,
   115,
   97,
-  115,
-  97,
   62,
   34,
   31,
@@ -237,7 +235,7 @@ const seedPokes = [10, 13, 16, 19, 1, 4, 7, 65, 98, 38, 55, 88, 26];
 const connection = require("./connection");
 // connection.sync({ force: false }).then(pokePuller);
 async function pokePuller() {
-  for (let i = 0; i < newSeed.length; i++) {
+  for (let i = 0; i < firstGen.length; i++) {
     let retPokeCall = await pokeApiCaller(i);
     await Pokemon.create({
       pokemon_name: retPokeCall.data.species.name,
@@ -254,7 +252,9 @@ async function pokePuller() {
 }
 
 async function pokeApiCaller(id) {
-  let apiCall = await axios(`https://pokeapi.co/api/v2/pokemon/${newSeed[id]}`);
+  let apiCall = await axios(
+    `https://pokeapi.co/api/v2/pokemon/${firstGen[id]}`
+  );
   return apiCall;
 }
 
