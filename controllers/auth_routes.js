@@ -21,20 +21,20 @@ auth_router.post("/register", isLoggedIn, (req, res) => {
     req.session.errors = ["Please select an option."];
     return res.redirect("/register");
   }
-  if (type === "water") {
-    hp = 48;
-    attack = 53;
-    defense = 72;
-    speed = 47;
-  } else if (type === "fire") {
-    hp = 44;
-    attack = 57;
+  if (type === "defense") {
+    hp = 60;
+    attack = 47;
+    defense = 65;
+    speed = 43;
+  } else if (type === "attack") {
+    hp = 43;
+    attack = 65;
     defense = 47;
-    speed = 72;
-  } else if (type === "grass") {
+    speed = 60;
+  } else if (type === "jackOfAll") {
     hp = 52;
-    attack = 58;
-    defense = 58;
+    attack = 56;
+    defense = 55;
     speed = 52;
   }
 
