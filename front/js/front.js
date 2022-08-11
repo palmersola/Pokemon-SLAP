@@ -62,7 +62,7 @@ async function turn() {
         if (koCheck() === false) plyKO();
       }
       // after slap check to see if pokemon or player is KO'd
-    }, 1250);
+    }, 950);
   } else {
     // opponent slap turn
     plyHp = await opponentSlap();
@@ -80,7 +80,7 @@ async function turn() {
         slapping = false;
         if (koCheck()) pokeKO();
       }
-    }, 1250);
+    }, 950);
   }
 }
 
@@ -116,7 +116,7 @@ async function playerSlap() {
       pokeHit.classList.remove("animation");
       plyrCrit.style.visibility = "hidden";
       plyrCrit.classList.remove("animation");
-    }, 400);
+    }, 500);
 
     critical = 1;
     return newHp;
@@ -128,7 +128,7 @@ async function playerSlap() {
     setTimeout(() => {
       plyrMiss.style.visibility = "hidden";
       plyrMiss.classList.remove("animation");
-    }, 400);
+    }, 500);
 
     critical = 1;
 
@@ -167,7 +167,7 @@ async function opponentSlap() {
       plyrHit.classList.remove("animation");
       pokeCrit.style.visibility = "hidden";
       pokeCrit.classList.remove("animation");
-    }, 400);
+    }, 500);
 
     return newHp;
   } else {
@@ -178,7 +178,7 @@ async function opponentSlap() {
     setTimeout(() => {
       pokeMiss.style.visibility = "hidden";
       document.getElementById("pokeMiss").classList.remove("animation");
-    }, 400);
+    }, 500);
 
     return newHp;
   }
