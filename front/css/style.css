@@ -289,25 +289,49 @@ header a:hover {
   font-size: 28px;
   padding: 2px 10px;
   background-color: rgb(118, 116, 116);
-  color: rgb(255, 68, 0);
+  color: red;
   border-radius: 6px;
 }
 
-#pokeMiss {
+#pokeMiss,
+#plyrMiss,
+#pokeCrit,
+#plyrCrit,
+#pokeHit,
+#plyrHit {
   font-size: 60px;
   color: red;
   position: absolute;
-  bottom: 110px;
-  left: 80px;
   visibility: hidden;
 }
-#plyrMiss {
-  font-size: 60px;
-  color: red;
-  position: absolute;
+#pokeMiss {
   bottom: 110px;
-  right: 80px;
-  visibility: hidden;
+  left: 20px;
+}
+
+#pokeCrit {
+  bottom: 180px;
+  left: 10px;
+}
+
+#plyrHit {
+  bottom: 40px;
+  left: -40px;
+}
+
+#plyrMiss {
+  bottom: 50px;
+  right: 20px;
+}
+
+#plyrCrit {
+  bottom: 120px;
+  right: 0px;
+}
+
+#pokeHit {
+  bottom: 40px;
+  right: -40px;
 }
 
 #player,
