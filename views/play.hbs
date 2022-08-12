@@ -1,38 +1,32 @@
 <div class="center-wrapper">
-    <h1 class="round-count">Level: <span id="level">{{player.dataValues.level}}</span></h1>
     <div class="game-container " >
+        <h1 class="round-count">Round: <span id="level">{{opponent.dataValues.id}}</span></h1>
         <div class="game-over">
             <h1 id="gameOver">GAME OVER</h1>
         </div>
-
-        <div id="player">
-            <h2 id="pokeMiss">*DODGE*</h2>
-            <h2 id="pokeCrit">*CRITICAL*</h2>
-            <h2 id="plyrHit"></h2>
-            <div class="player-sprite">
-                <img src="{{player.dataValues.sprite}}" id="plySprt" alt="player's sprite">
-            </div>
-            <div class="player-stats">
-                <span class="hp-stat" >{{playerName.dataValues.user_name}} HP: <span id="plyHp">{{player.dataValues.hp_stat}}</span></span>
-            </div>
+        
+        <div class="button-container">
+            <button id="replayBtn">play again</button>
         </div>
-        <div id="poke">
-            <h2 id="plyrMiss" >*DODGE*</h2>
-            <h2 id="plyrCrit" >*CRITICAL*</h2>
-            <h2 id="pokeHit"></h2>
-            <div class="poke-sprite">
-                <img src="{{opponent.dataValues.sprite}}" id="oppSprt" alt="pokemon sprite">
-            </div>
-            <div class="poke-stats">
-                <span class="hp-stat"> <span id="oppName">{{opponent.dataValues.pokemon_name}}</span> HP: <span id="oppHp">{{opponent.dataValues.hp_stat}}</span></span>
-            </div>
+        <div id="player-stats">
+            <span class="hp-stat" >{{playerName.dataValues.user_name}} HP: <span id="plyHp">{{player.dataValues.hp_stat}}</span></span>
         </div>
+        <h2 id="pokeMiss">*DODGE*</h2>
+        <h2 id="pokeCrit">*CRITICAL*</h2>
+        <h2 id="plyrHit"></h2>
+        <img src="{{player.dataValues.sprite}}" id="player" alt="player's sprite">
+        
+        <div id="poke-stats">
+            <span class="hp-stat"> <span id="oppName">{{opponent.dataValues.pokemon_name}}</span> HP: <span id="oppHp">{{opponent.dataValues.hp_stat}}</span></span>
+        </div>
+        <h2 id="plyrMiss" >*DODGE*</h2>
+        <h2 id="plyrCrit" >*CRITICAL*</h2>
+        <h2 id="pokeHit"></h2>
+        <img src="{{opponent.dataValues.sprite}}" id="poke" alt="pokemon sprite">
+    
     </div>
     <h1>press spacebar to slap your opponent</h1>
     
-    <div class="button-container">
-        <button id="replayBtn">play again</button>
-    </div>
 </div>
 <script>
     let plyHp = {{player.dataValues.hp_stat}};
@@ -44,6 +38,7 @@
     let oppAtk = {{opponent.dataValues.attack_stat}};
     let oppDef = {{opponent.dataValues.defense_stat}};
     let oppSpd = {{opponent.dataValues.speed_stat}};
+    let oppExp = {{opponent.dataValues.experience}}
     let baseHp = {{player.dataValues.base_hp}};
     let baseAtk = {{player.dataValues.base_attack}};
     let baseDef = {{player.dataValues.base_defense}};

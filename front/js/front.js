@@ -1,15 +1,17 @@
 let round;
 getLevel();
+// plySprt;
 let slapping = false;
 let critical = 1;
 let newHp;
+let pokeIndex = 1;
 
-let plySprt = document.getElementById("plySprt");
+let plySprt = document.getElementById("player");
 let plyrCrit = document.getElementById("plyrCrit");
 let plyrMiss = document.getElementById("plyrMiss");
 let plyrHit = document.getElementById("plyrHit");
 
-let oppSprt = document.getElementById("oppSprt");
+let oppSprt = document.getElementById("poke");
 let pokeCrit = document.getElementById("pokeCrit");
 let pokeMiss = document.getElementById("pokeMiss");
 let pokeHit = document.getElementById("pokeHit");
@@ -60,7 +62,7 @@ async function turn() {
         if (koCheck() === false) plyKO();
       }
       // after slap check to see if pokemon or player is KO'd
-    }, 950);
+    }, 750);
   } else {
     // opponent slap turn
     plyHp = await opponentSlap();
@@ -78,7 +80,7 @@ async function turn() {
         slapping = false;
         if (koCheck()) pokeKO();
       }
-    }, 950);
+    }, 750);
   }
 }
 
@@ -177,14 +179,13 @@ async function opponentSlap() {
       pokeMiss.style.visibility = "hidden";
       document.getElementById("pokeMiss").classList.remove("animation");
     }, 500);
-
+    console.log(newHp);
     return newHp;
   }
 }
 
 function koCheck() {
   if (oppHp === 0) {
-    bossin.play();
     // pokeKO();
     return true;
   } else if (plyHp === 0) {
@@ -194,18 +195,24 @@ function koCheck() {
 }
 
 function pokeKO() {
+  bossin.play();
   round++;
-  levelUp(round);
+  oppExp++;
+  pokeIndex++;
+  if (oppExp === 10) {
+    plylevel++;
+    oppexp = 0;
+  }
+  levelUp();
 }
 function plyKO() {
   console.log("you were KO'D by pokemon");
   loser(level);
 }
 
-function levelUp(round) {
+function levelUp() {
   console.log("level up called");
   // will increase stats in db to current stats of the lvl
-  let plyLevel = round;
   plyHp = Math.floor(0.01 * (2 * baseHp * plyLevel) + plyLevel + 10 + baseHp);
   plyAtk = Math.floor(0.01 * (2 * baseAtk * plyLevel) + 5 + baseAtk);
   plyDef = Math.floor(0.01 * (2 * baseDef * plyLevel) + 5 + baseDef);
@@ -214,20 +221,19 @@ function levelUp(round) {
 
   //check to see if player hits the save points every 5 levels and
   //update stats in the database for character
-  if (round % 5 === 0) {
-    let data = {
-      plyLevel: plyLevel,
-      plyHp: plyHp,
-      plyAtk: plyAtk,
-      plyDef: plyDef,
-      plySpd: plySpd
-    };
-    axios.post(`/play/save`, data).then(nextPokemon(plyLevel));
-  } else nextPokemon(plyLevel);
+
+  let data = {
+    plyLevel: plyLevel,
+    plyHp: plyHp,
+    plyAtk: plyAtk,
+    plyDef: plyDef,
+    plySpd: plySpd
+  };
+  axios.post(`/play/save`, data).then(nextPokemon(pokeIndex, plyLevel));
 }
 
-async function nextPokemon(plyLevel) {
-  let nextPoke = await axios.get(`/play/${plyLevel}`);
+async function nextPokemon(pokeIndex) {
+  let nextPoke = await axios.get(`/play/${pokeIndex}`);
   // console.log(nextPoke);
   //update next pokemon stats based off level
   oppHp = Math.floor(
@@ -254,7 +260,7 @@ async function nextPokemon(plyLevel) {
   console.log("level up func oppHP" + oppHp);
   //update image source
   console.log(`HP: ${oppHp} Atk: ${oppAtk} Def: ${oppDef} Spd: ${oppSpd}`);
-  document.getElementById("oppSprt").src = nextPoke.data.sprite;
+  oppSprt.src = nextPoke.data.sprite;
   document.getElementById("oppName").innerText = nextPoke.data.pokemon_name;
   document.getElementById("oppHp").innerText = oppHp;
   document.getElementById("level").innerText = round;
