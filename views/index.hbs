@@ -2,85 +2,90 @@
 
 <section>
     <div class="user-wrapper">
-
-        <div class="user-text">
-            <h2>PokéSlapper</h2>
-            <h1>{{user.dataValues.user_name}}</h1>
-            <div class="avatar-display">
-                <img src={{charStats.sprite}} alt="avatar">
+        <div>
+            <div class="user-text">
+                <h2>PokéSlapper</h2>
+                <h1>{{user.dataValues.user_name}}</h1>
+                <div class="avatar-display">
+                    <img src={{charStats.sprite}} alt="avatar">
+                </div>
+                <div class="stats">
+                    <span id="level">Level: {{charStats.level}}</span>
+                    <span id="hp-stat">HP: {{charStats.hp_stat}}</span>
+                    <span id="attack-stat">Attack: {{charStats.attack_stat}}</span>
+                    <span id="defense-stat">Defense: {{charStats.defense_stat}}</span>
+                    <span id="speed-stat">Speed: {{charStats.speed_stat}}</span>
+                </div>
             </div>
-            <div class="stats">
-                <span id="level">Level: {{charStats.level}}</span>
-                <span id="hp-stat">HP: {{charStats.hp_stat}}</span>
-                <span id="attack-stat">Attack: {{charStats.attack_stat}}</span>
-                <span id="defense-stat">Defense: {{charStats.defense_stat}}</span>
-                <span id="speed-stat">Speed: {{charStats.speed_stat}}</span>
+
+            <div class="button-container">
+                <button id="playBtn"><a href="/play">start slapping</a></button>
             </div>
         </div>
 
-<section class="settings">
-    <h3>Settings</h3>
-    <p>click on a sprite, then click the green button</p>
-    <form action="/characters/sprite" method="post" class="sprite-container" id="sprite-form">
-        <label for="ash">
-            <img class="sprite-img" src="ash.png" alt="ash">
-            <input id="ash" type="radio" name="sprite" value="ash">
-        </label>
-        <label for="ballguy">
-            <img class="sprite-img" src="ballguy.png" alt="ballguy">
-            <input id="ballguy" type="radio" name="sprite" value="ballguy">
-        </label>
-        <label for="blaine">
-            <img class="sprite-img" src="blaine.png" alt="blaine">
-            <input id="blaine" type="radio" name="sprite" value="blaine">
-        </label>
-        <label for="boarder">
-            <img class="sprite-img" src="boarder.png" alt="boarder">
-            <input id="boarder" type="radio" name="sprite" value="boarder">
-        </label>
-        <label for="bugcatcher">
-            <img class="sprite-img" src="bugcatcher-gen3.png" alt="bugcatcher">
-            <input id="bugcatcher" type="radio" name="sprite" value="bugcatcher-gen3">
-        </label>
-        <label for="chuck">
-            <img class="sprite-img" src="chuck.png" alt="chuck">
-            <input id="chuck" type="radio" name="sprite" value="chuck">
-        </label>
-        <label for="cynthia">
-            <img class="sprite-img" src="cynthia-gen4.png" alt="cynthia">
-            <input id="cynthia" type="radio" name="sprite" value="cynthia-gen4">
-        </label>
-        <label for="gentleman">
-            <img class="sprite-img" src="gentleman-gen4.png" alt="gentleman">
-            <input id="gentleman" type="radio" name="sprite" value="gentleman-gen4">
-        </label>
-        <label for="guitarist">
-            <img class="sprite-img" src="guitarist-gen3.png" alt="guitarist">
-            <input id="guitarist" type="radio" name="sprite" value="guitarist-gen3">
-        </label>
-        <label for="lady">
-            <img class="sprite-img" src="lady.png" alt="lady">
-            <input id="lady" type="radio" name="sprite" value="lady">
-        </label>
-        <label for="linebacker">
-            <img class="sprite-img" src="linebacker.png" alt="linebacker">
-            <input id="linebacker" type="radio" name="sprite" value="linebacker">
-        </label>
-        <label for="lyra">
-            <img class="sprite-img" src="lyra.png" alt="lyra">
-            <input id="lyra" type="radio" name="sprite" value="lyra">
-        </label>
-    </form>
-        <button id="spriteBtn" form="sprite-form">select sprite</button>
-</section>
+    <section class="settings">
+        {{!-- <h3>Settings</h3> --}}
+        <p>click on a sprite, then click the green button</p>
+        <form action="/characters/sprite" method="post" class="sprite-container" id="sprite-form">
+            <label for="ash">
+                <img class="sprite-img" src="ash.png" alt="ash">
+                <input id="ash" type="radio" name="sprite" value="ash">
+            </label>
+            <label for="ballguy">
+                <img class="sprite-img" src="ballguy.png" alt="ballguy">
+                <input id="ballguy" type="radio" name="sprite" value="ballguy">
+            </label>
+            <label for="blaine">
+                <img class="sprite-img" src="blaine.png" alt="blaine">
+                <input id="blaine" type="radio" name="sprite" value="blaine">
+            </label>
+            <label for="boarder">
+                <img class="sprite-img" src="boarder.png" alt="boarder">
+                <input id="boarder" type="radio" name="sprite" value="boarder">
+            </label>
+            <label for="bugcatcher">
+                <img class="sprite-img" src="bugcatcher-gen3.png" alt="bugcatcher">
+                <input id="bugcatcher" type="radio" name="sprite" value="bugcatcher-gen3">
+            </label>
+            <label for="chuck">
+                <img class="sprite-img" src="chuck.png" alt="chuck">
+                <input id="chuck" type="radio" name="sprite" value="chuck">
+            </label>
+            <label for="cynthia">
+                <img class="sprite-img" src="cynthia-gen4.png" alt="cynthia">
+                <input id="cynthia" type="radio" name="sprite" value="cynthia-gen4">
+            </label>
+            <label for="gentleman">
+                <img class="sprite-img" src="gentleman-gen4.png" alt="gentleman">
+                <input id="gentleman" type="radio" name="sprite" value="gentleman-gen4">
+            </label>
+            <label for="guitarist">
+                <img class="sprite-img" src="guitarist-gen3.png" alt="guitarist">
+                <input id="guitarist" type="radio" name="sprite" value="guitarist-gen3">
+            </label>
+            <label for="lady">
+                <img class="sprite-img" src="lady.png" alt="lady">
+                <input id="lady" type="radio" name="sprite" value="lady">
+            </label>
+            <label for="linebacker">
+                <img class="sprite-img" src="linebacker.png" alt="linebacker">
+                <input id="linebacker" type="radio" name="sprite" value="linebacker">
+            </label>
+            <label for="lyra">
+                <img class="sprite-img" src="lyra.png" alt="lyra">
+                <input id="lyra" type="radio" name="sprite" value="lyra">
+            </label>
+        </form>
+            <button id="spriteBtn" form="sprite-form">select sprite</button>
+    </section>
 
 </section>
 
-<div class="button-container">
+{{!-- <div class="button-container">
     
     <button id="playBtn"><a href="/play">start slapping</a></button>
 
-</div>
+</div> --}}
 
 
 {{else}}
