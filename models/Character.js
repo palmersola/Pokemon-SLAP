@@ -6,7 +6,7 @@ Character.init(
   {
     level: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      //allowNull: false,
       defaultValue: 1
     },
     hp_stat: {
